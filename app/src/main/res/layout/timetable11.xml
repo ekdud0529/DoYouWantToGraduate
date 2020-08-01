@@ -139,33 +139,43 @@
                 android:id="@+id/symbol"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:src="@drawable/purplesymbol" />
+                android:layout_margin="10dp"
+                android:src="@drawable/purplesymbol"
+                />
 
-            <ImgButton
+            <ImageButton
                 android:id="@+id/home"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/browser" />
+                android:background="#FFFFFF"
+                android:src="@drawable/browser"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
-            <ImgButton
+            <ImageButton
                 android:id="@+id/timetable"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/calendar" />
+                android:src="@drawable/calendar"
+                android:background="#FFFFFF"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
-            <ImgButton
+            <ImageButton
                 android:id="@+id/fin"
+                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:src="@drawable/human" />
+                android:src="@drawable/human"
+                android:background="#FFFFFF"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
 

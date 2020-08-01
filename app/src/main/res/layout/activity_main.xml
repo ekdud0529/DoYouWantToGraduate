@@ -26,6 +26,7 @@
             android:id="@+id/grade_selector"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:entries="@array/grade"
             android:layout_marginBottom="380dp"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="90dp"
@@ -57,14 +58,14 @@
         </Spinner>
 
         <Button
-            android:id="@+id/confirm"
+            android:id="@+id/complete"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="300dp"
             android:layout_marginTop="320dp"
             android:layout_marginBottom="130dp"
-            android:background="@color/coloryell"
+            android:background="@drawable/listrec"
             android:text="확인"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -91,7 +92,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:src="@drawable/purplesymbol" />
+                android:src="@drawable/purplesymbol"
+                />
 
             <ImageButton
                 android:id="@+id/home"
@@ -99,16 +101,21 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:src="@drawable/browser" />
+                android:background="#FFFFFF"
+                android:src="@drawable/browser"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/timetable"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-
                 android:layout_margin="10dp"
-                android:src="@drawable/calendar" />
+                android:src="@drawable/calendar"
+                android:background="#FFFFFF"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
             <ImageButton
                 android:id="@+id/fin"
@@ -116,7 +123,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:src="@drawable/human" />
+                android:src="@drawable/human"
+                android:background="#FFFFFF"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"/>
 
         </LinearLayout>
 
