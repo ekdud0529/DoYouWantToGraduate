@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">DoYouWantToGraduate</string>
+    <string name="num14">14 학번</string>
+    <string name="num1516">15 / 16 학번</string>
+    <string name="num1718">17 / 18 학번</string>
+    <string name="num19">19 학번</string>
+    <string name="number_complete">확인</string>
 </resources>
