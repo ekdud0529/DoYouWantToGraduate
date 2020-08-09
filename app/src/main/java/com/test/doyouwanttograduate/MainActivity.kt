@@ -24,26 +24,6 @@ class MainActivity : AppCompatActivity() {
         grade_selector.adapter = adapter1
         semester_selector.adapter = adapter2
 
-        grade_selector.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                println("선택하세요")
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
-            }
-        }
-
-        semester_selector.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                println("선택하세요")
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
-            }
-        }
-
         complete.setOnClickListener{
             val intent11 = Intent(this@MainActivity, timetable11::class.java)
             //    ...
