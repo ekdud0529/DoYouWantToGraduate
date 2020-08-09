@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SemesterChoice"></activity>
         <activity android:name=".NumberChoice" />
-        <activity android:name=".timetable11" />
+        <activity android:name=".activity_timetable11" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
