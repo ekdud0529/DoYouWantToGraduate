@@ -1,12 +1,8 @@
 package com.test.doyouwanttograduate
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -24,28 +20,8 @@ class MainActivity : AppCompatActivity() {
         grade_selector.adapter = adapter1
         semester_selector.adapter = adapter2
 
-        grade_selector.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                println("선택하세요")
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
-            }
-        }
-
-        semester_selector.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(p0: AdapterView<*>?) {
-                println("선택하세요")
-            }
-
-            override fun onItemSelected(p0: AdapterView<*>?, view: View?, pos: Int, id: Long) {
-
-            }
-        }
-
         complete.setOnClickListener{
-            val intent11 = Intent(this@MainActivity, timetable11::class.java)
+            val intent11 = Intent(this@MainActivity, activity_timetable11::class.java)
             //    ...
 
 
@@ -55,6 +31,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
+        }
+
+        home_bnt.setOnClickListener{
+            val  intent_hbnt = Intent(this@MainActivity, activity_home::class.java)
+            startActivity(intent_hbnt)
+        }
+
+        timet_bnt.setOnClickListener{
+            val  intent_tbnt = Intent(this@MainActivity, activity_timetable11::class.java)
+            startActivity(intent_tbnt)
+        }
+
+        fin_bnt.setOnClickListener{
+            val  intent_fbnt = Intent(this@MainActivity, activity_mng::class.java)
+            startActivity(intent_fbnt)
         }
 
     }
