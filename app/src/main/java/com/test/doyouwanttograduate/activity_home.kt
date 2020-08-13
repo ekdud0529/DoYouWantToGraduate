@@ -12,29 +12,15 @@ class activity_home : AppCompatActivity(){
         setContentView(R.layout.home)
 
         val intent_t = Intent(this@activity_home, MainActivity::class.java)
-        //val intent_g = Intent(this@activity_home, timetable11::class.java)
+        val intent_g = Intent(this@activity_home, activity_mng::class.java)
 
         timetable.setOnClickListener{
             startActivity(intent_t)
         }
 
         grade.setOnClickListener{
-
+            startActivity(intent_g)
         }
 
-        home_bnt.setOnClickListener{
-            val  intent_hbnt = Intent(this@activity_home, activity_home::class.java)
-            startActivity(intent_hbnt)
-        }
-
-        timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@activity_home, activity_timetable11::class.java)
-            startActivity(intent_tbnt)
-        }
-
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@activity_home, activity_mng::class.java)
-            startActivity(intent_fbnt)
-        }
     }
 }

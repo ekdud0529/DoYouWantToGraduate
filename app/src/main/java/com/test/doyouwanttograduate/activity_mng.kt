@@ -1,4 +1,7 @@
 package com.test.doyouwanttograduate
 
-class activity_mng {
+import androidx.appcompat.app.AppCompatActivity
+
+class activity_mng : AppCompatActivity(){
+
 }
