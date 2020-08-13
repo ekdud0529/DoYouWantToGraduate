@@ -9,7 +9,8 @@ class activity_mng : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.credit_management)
-        // commit외않되?
+
+
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@activity_mng, activity_home::class.java)
             startActivity(intent_hbnt)
