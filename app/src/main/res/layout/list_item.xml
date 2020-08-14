@@ -85,6 +85,16 @@
             android:layout_height="match_parent"
             android:layout_weight="0.15">
 
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/listrec"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp" />
+
         </RelativeLayout>
 
 
