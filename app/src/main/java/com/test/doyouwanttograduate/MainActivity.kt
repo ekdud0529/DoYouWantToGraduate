@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@MainActivity, activity_timetable11::class.java)
+            val  intent_tbnt = Intent(this@MainActivity, MainActivity::class.java)
             startActivity(intent_tbnt)
         }
 
