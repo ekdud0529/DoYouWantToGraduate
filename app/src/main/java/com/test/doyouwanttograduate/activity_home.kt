@@ -11,14 +11,13 @@ class activity_home : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home)
 
-        val intent_t = Intent(this@activity_home, MainActivity::class.java)
-        val intent_g = Intent(this@activity_home, activity_mng::class.java)
-
-        timetable.setOnClickListener{
+        timetable_bnt.setOnClickListener{
+            val intent_t = Intent(this@activity_home, MainActivity::class.java)
             startActivity(intent_t)
         }
 
-        grade.setOnClickListener{
+        grade_bnt.setOnClickListener{
+            val intent_g = Intent(this@activity_home, activity_mng::class.java)
             startActivity(intent_g)
         }
 

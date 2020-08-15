@@ -10,14 +10,14 @@
         android:id="@+id/mng"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2">
+        android:layout_weight="0.1">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/whitesymbol"
-            android:layout_marginTop="70dp"
-            android:layout_marginStart="310dp"
+            android:src="@drawable/whitesymbol"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="350dp"
             android:layout_centerHorizontal="true"/>
 
     </RelativeLayout>
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:stretchColumns="1,2"
+            android:stretchColumns="1"
             android:layout_centerVertical="true">
 
             <TableRow
@@ -52,7 +52,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="이수학점"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="최소/최대"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -77,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="교양"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -86,8 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -96,8 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -111,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="설계"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -120,8 +118,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -130,11 +127,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
+                    android:textSize="24sp"
                     android:text="12"
-                    android:textSize="25sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
+
             </TableRow>
 
             <TableRow
@@ -145,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="BSM"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -154,8 +152,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -164,11 +161,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
+                    android:textSize="24sp"
                     android:text="22"
-                    android:textSize="25sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
+
             </TableRow>
 
             <TableRow
@@ -178,8 +176,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text="전공"
-                    android:textSize="25sp"
+                    android:text="전필"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -188,8 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -198,11 +195,44 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
+
+            </TableRow>
+
+            <TableRow
+                android:background="@drawable/spinner_bnt"
+                android:layout_marginTop="5dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="전선"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:background="#00000000"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:background="#00000000"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:background="#00000000"/>
+
             </TableRow>
 
             <TableRow
@@ -213,7 +243,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="일선"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -222,8 +252,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -232,11 +261,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
+
             </TableRow>
 
             <TableRow
@@ -247,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="최종"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -256,8 +285,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
-                    android:text=""
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
@@ -267,10 +295,11 @@
                     android:layout_height="wrap_content"
                     android:padding="12dp"
                     android:text="140"
-                    android:textSize="25sp"
+                    android:textSize="24sp"
                     android:textColor="#000000"
                     android:gravity="center"
                     android:background="#00000000"/>
+
             </TableRow>
 
         </TableLayout>
@@ -300,7 +329,7 @@
                 />
 
             <ImageButton
-                android:id="@+id/home"
+                android:id="@+id/home_bnt"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -311,7 +340,7 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/timetable"
+                android:id="@+id/timet_bnt"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -322,7 +351,7 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/fin"
+                android:id="@+id/fin_bnt"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
