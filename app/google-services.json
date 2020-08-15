@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "869437737951",
+    "firebase_url": "https://doyouwanttograduate.firebaseio.com",
+    "project_id": "doyouwanttograduate",
+    "storage_bucket": "doyouwanttograduate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869437737951:android:1b472abe29de313344126a",
+        "android_client_info": {
+          "package_name": "com.test.doyouwanttograduate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869437737951-btl0h81nivth6mmvg3undm4ood6h48uv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgzofqsMq4o5jpP2QLwExV4FhcVVavPP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869437737951-btl0h81nivth6mmvg3undm4ood6h48uv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
