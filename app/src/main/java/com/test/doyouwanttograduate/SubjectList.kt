@@ -1,8 +1,13 @@
 package com.test.doyouwanttograduate
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_subject_list.*
+import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.timet_bnt
 import javax.security.auth.Subject
 
 
@@ -23,7 +28,25 @@ class SubjectList : AppCompatActivity() {
         setContentView(R.layout.activity_subject_list)
 
 
-        val Adapter = MainListAdapter(this, subjectList)
-        mainListView.adapter = Adapter
+        val listadapter = MainListAdapter(this, subjectList)
+        mainListView.adapter = listadapter
+
+
+
+        home_bnt.setOnClickListener{
+            val  intent_hbnt = Intent(this@SubjectList, activity_home::class.java)
+            startActivity(intent_hbnt)
+        }
+
+        timet_bnt.setOnClickListener{
+            val  intent_tbnt = Intent(this@SubjectList, MainActivity::class.java)
+            startActivity(intent_tbnt)
+        }
+
+        fin_bnt.setOnClickListener{
+            val  intent_fbnt = Intent(this@SubjectList, activity_mng::class.java)
+            startActivity(intent_fbnt)
+        }
+
     }
 }
