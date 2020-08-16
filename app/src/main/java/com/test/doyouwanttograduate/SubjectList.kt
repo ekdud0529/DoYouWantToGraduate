@@ -15,10 +15,14 @@ class SubjectList : AppCompatActivity() {
 
     var subjectList = arrayListOf<com.test.doyouwanttograduate.Subject>(
 
-        Subject("database", "o","3","3"),
-        Subject("mobile", "x","3","3"),
-        Subject("programming", "x","3","3"),
-        Subject("network", "o","3","3")
+        Subject("데이터 베이스", "o","3","3"),
+        Subject("모바일 프로그래밍", "x","3","3"),
+        Subject("프로그래밍 언어론", "x","3","3"),
+        Subject("네트워크", "o","3","3"),
+        Subject("객체 지향 프로그래밍" , "o","3","3"),
+        Subject("수학_1", "x","3","3"),
+        Subject("수치해석", "x","3","3"),
+        Subject("컴퓨터 구조", "o","3","3")
 
     )
 
