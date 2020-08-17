@@ -74,7 +74,7 @@
         android:id="@+id/menuBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.08"
         android:background="#FFFFFF">
 
         <LinearLayout
@@ -89,8 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:src="@drawable/purplesymbol"
-                />
+                android:src="@drawable/purplesymbol" />
 
             <ImageButton
                 android:id="@+id/home_bnt"
