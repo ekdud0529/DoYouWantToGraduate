@@ -14,7 +14,12 @@ class NumberChoice : AppCompatActivity() {
         number_complete.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+
+
+
         }
+
+
 
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@NumberChoice, activity_home::class.java)

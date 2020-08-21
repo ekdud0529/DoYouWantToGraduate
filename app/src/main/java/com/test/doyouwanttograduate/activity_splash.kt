@@ -17,7 +17,7 @@ class activity_splash: AppCompatActivity() {
     private fun startLoading() {
         val handler = Handler()
         handler.postDelayed(Runnable {
-            val intent = Intent(this@activity_splash, activity_home::class.java)
+            val intent = Intent(this@activity_splash, NumberChoice::class.java)
             startActivity(intent)
             finish()
         }, 2000)
