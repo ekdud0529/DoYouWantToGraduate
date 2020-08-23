@@ -3,6 +3,7 @@ package com.test.doyouwanttograduate
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_number_choice.*
 
@@ -11,29 +12,27 @@ class NumberChoice : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_number_choice)
 
-        number_complete.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        val intent_h = Intent(this@NumberChoice, activity_home::class.java)
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            numDB::class.java, "numDB"
+        ).build()
 
 
+        num14.setOnClickListener{
+            number_complete.setOnClickListener{
+                val number = numEnt(1, 14)
+                db.numDao().insert(num = number)
 
+                startActivity(intent_h)
+            }
         }
 
+        number_complete.setOnClickListener{
 
-
-        home_bnt.setOnClickListener{
-            val  intent_hbnt = Intent(this@NumberChoice, activity_home::class.java)
-            startActivity(intent_hbnt)
+            startActivity(intent_h)
         }
 
-        timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@NumberChoice, MainActivity::class.java)
-            startActivity(intent_tbnt)
-        }
-
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@NumberChoice, activity_mng::class.java)
-            startActivity(intent_fbnt)
-        }
     }
 }
