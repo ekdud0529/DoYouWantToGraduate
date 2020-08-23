@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity android:name=".SubjectListActivity"/>
         <activity android:name=".activity_home"/>
         <activity android:name=".NumberChoice" />
         <activity android:name=".activity_timetable11" />
+        <activity android:name=".addSubjectActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name="activity_mng"/>
     </application>

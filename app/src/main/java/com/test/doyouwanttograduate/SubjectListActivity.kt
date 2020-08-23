@@ -1,18 +1,23 @@
 package com.test.doyouwanttograduate
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.Button
+import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.ChildEventListener
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_subject_list.*
-import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
-import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
-import kotlinx.android.synthetic.main.activity_subject_list.timet_bnt
-import javax.security.auth.Subject
 
 
 class SubjectListActivity : AppCompatActivity() {
+
+    private val mDatabase: FirebaseDatabase? = null
+    private val mReference: DatabaseReference? = null
+    private val mChild: ChildEventListener? = null
+
 
     var subjectList = arrayListOf<com.test.doyouwanttograduate.Subject>(
 
@@ -27,20 +32,25 @@ class SubjectListActivity : AppCompatActivity() {
 
     )
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject_list)
 
 
-        val listadapter = MainListAdapter(this, subjectList)
-        mainListView.adapter = listadapter
 
-        val grade = resources.getStringArray(R.array.grade)
+        val gradeEtc = resources.getStringArray(R.array.gradeEtc)
         val semester = resources.getStringArray(R.array.semester)
 
-        val adapt1 = ArrayAdapter<String>(this@SubjectListActivity, android.R.layout.simple_list_item_1, grade)
-        val adapt2 = ArrayAdapter<String>(this@SubjectListActivity, android.R.layout.simple_list_item_1, semester)
+        val adapt1 = ArrayAdapter<String>(
+            this@SubjectListActivity,
+            android.R.layout.simple_list_item_1,
+            gradeEtc
+        )
+        val adapt2 = ArrayAdapter<String>(
+            this@SubjectListActivity,
+            android.R.layout.simple_list_item_1,
+            semester
+        )
 
         grade_sel.adapter = adapt1
         semester_sel.adapter = adapt2
@@ -48,18 +58,18 @@ class SubjectListActivity : AppCompatActivity() {
         //스피너 이벤트 구간
 
 
-        home_bnt.setOnClickListener{
-            val  intent_hbnt = Intent(this@SubjectListActivity, activity_home::class.java)
+        home_bnt.setOnClickListener {
+            val intent_hbnt = Intent(this@SubjectListActivity, activity_home::class.java)
             startActivity(intent_hbnt)
         }
 
-        timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@SubjectListActivity, MainActivity::class.java)
+        timet_bnt.setOnClickListener {
+            val intent_tbnt = Intent(this@SubjectListActivity, MainActivity::class.java)
             startActivity(intent_tbnt)
         }
 
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@SubjectListActivity, activity_mng::class.java)
+        fin_bnt.setOnClickListener {
+            val intent_fbnt = Intent(this@SubjectListActivity, activity_mng::class.java)
             startActivity(intent_fbnt)
         }
 

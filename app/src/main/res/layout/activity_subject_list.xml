@@ -84,12 +84,12 @@
 
                 <Button
                     android:id="@+id/g_s_complete"
-                    android:text="@string/complete"
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/listrec" />
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/listrec"
+                    android:text="@string/complete" />
 
 
 
@@ -105,6 +105,7 @@
         android:layout_weight="0.1">
 
         <LinearLayout
+            android:id="@+id/back_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
@@ -116,10 +117,10 @@
                 android:layout_weight="0.4">
 
                 <TextView
-                    android:id="@+id/subjectTv"
+                    android:id="@+id/subjectNameTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:text="@string/subject"/>
@@ -134,10 +135,10 @@
                 android:layout_weight="0.15">
 
                 <TextView
-                    android:id="@+id/bsmTv"
+                    android:id="@+id/subjectBsmTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:text="@string/bsm"/>
@@ -151,10 +152,10 @@
                 android:layout_weight="0.15">
 
                 <TextView
-                    android:id="@+id/planTv"
+                    android:id="@+id/subjectPlanTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:text="@string/plan"/>
@@ -168,13 +169,30 @@
                 android:layout_weight="0.15">
 
                 <TextView
-                    android:id="@+id/numTv"
+                    android:id="@+id/subjectNumTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/num"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:text="@string/num"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/state_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15">
+
+                <TextView
+                    android:id="@+id/subjectStateTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="@string/state"/>
 
             </RelativeLayout>
 
@@ -185,15 +203,16 @@
                 android:layout_weight="0.15">
 
                 <TextView
-                    android:id="@+id/checkTv"
+                    android:id="@+id/complete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="20dp"
+                    android:textSize="15dp"
                     android:textStyle="bold"
                     android:gravity="center"
                     android:text="@string/subCheck"/>
 
             </RelativeLayout>
+
 
 
         </LinearLayout>
