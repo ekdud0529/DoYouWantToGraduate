@@ -16,6 +16,7 @@
     <string name="sem_add">일반선택 / 교양</string>
     <string name="subject">과목명</string>
     <string name="bsm">BSM</string>
+    <string name="complete">확인</string>
     <string name="plan">설계</string>
     <string name="num">학점</string>
     <string name="state">구분</string>
