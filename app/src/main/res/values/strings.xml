@@ -12,5 +12,6 @@
     <string name="num">학점</string>
     <string name="state">구분</string>
     <string name="subCheck">선택</string>
+    <string name="bt_click">#FFE91E63</string>
 
 </resources>
