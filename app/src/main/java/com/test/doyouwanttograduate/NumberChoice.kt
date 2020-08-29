@@ -28,7 +28,6 @@ class NumberChoice : AppCompatActivity() {
 
     class OnYearClickListener(val context: Context) : View.OnClickListener {
         override fun onClick(v: View?) {
-
             // 선택한 학번 값 저장
             val sharedPreferences = context.getSharedPreferences("setting", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
@@ -42,6 +41,7 @@ class NumberChoice : AppCompatActivity() {
 
             if (editor.commit()) {
                 val intent = Intent(context, activity_home::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 context.startActivity(intent)
             }
         }
