@@ -13,9 +13,11 @@ class Splash: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash)
 
+        // 선택한 학번값 가져오기
         val pref = getSharedPreferences("setting", Context.MODE_PRIVATE)
         val number:Int = pref.getInt("grade", 0)
 
+        // 학번 선택했으면 바로 홈 화면으로 아니면 학번 선택화면으로 이동
         if(number!=0){
             startLoading()
         }
