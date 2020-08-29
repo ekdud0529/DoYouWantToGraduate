@@ -15,38 +15,11 @@ class MainListAdapter(
     private var subjectList: ArrayList<Subject>? = null
 
     init {
-        /**여기서  firebase 에서 데이터를 조회해 오면 됩니다.
-         * 만약 많은 Activity 에서 조회 해야 한다면 트레픽 문제가 발생할 수 있기 때문에 처음 앱이 켜질때 받아오거나
-         * 관련 activity 단계로 진입할때만 체크해서 가져오게 하는게 좋을 것 같습니다.
-         */
+
+
         subjectList = null
 
-        //이제 여기서 부터 작업 하시면 됩니다.넵넵 그리고 한가지 더 궁급한데 있는데
-        // firebase에서 리스트 작업한 데이터들이랑. edittext로 받아서 넣는 데이터들이랑 그냥 저 페이지에서 다 처리되는 건가요?
-        /**
-         * 원래 Activitiy 에서 check 박스를 다 체크하고 확인 버튼을 누르면 체크 박스 되어있는 데이터를 앱 내부 db 에 저장을 해줍니다.
-         * 저장할때의 db 구조는 Subject class 와 동일 하면 되겠죠?
-         * 다음으로 사용자가 추가하는 데이터도 Subject class 와 동일한 구조로 입력을 받으면 동일 한 table에서 두가지 데이터를 같이 처리할 수 있죠.
-         * 로컬에서 작업 되구요.
-         * 그러면 여기코드에서 쓸때는 child이름으로만 사용하면 되나요?
-         * firebase 에서 가져오는 부분하고 혹시 사용자가 추가하는 부분은 아직 작성이 안되어 있나요?네
-         * 일단 fire base 에서 데이터 가져와서 리스트로 뿌려주고 체크박스 선택후 ok 누르면 local db에 저장 되는 부분 까지 해서 작성 해드릴꼐요
-         * 보고 수정할 부분 참고 해가면서 분석 하시면 될것 같습니다!네 완전 감사합니다!
-         * 이 프로젝트 push 하고 마무리 할 부분 암튼 올려주시면 제가 확인하고 수정후 리퀘슽 드리겠습닏아
-         *
-         */
-        // 여기까지 해서 git 올려두시면
-        //제가 작업 하고 연락드리겠습니다.
-        //fire base 계정 정보 남겨주실 수 있으시면 톡방에 남겨주세요
 
-        // TODO: grade , semester 기반으로 firebase 에서 과목리스트를 가져와서 가져온 데이터를 subjectList 에 넣어주시면 됩니다.
-        // TODO: 가져오실때 is_checked 는 모두 False 로 해주시고 subjectList 에 추가 해주세요.
-        /**
-         * 다음에 아래의 getView 에서 해당 체크 박스가 선택 되면 subjectList 에서 is_checked = true 로 해주세요.
-         *
-         * 마지막으로 체크 선택이 다되고 원 Activity 에서 저장 버튼을 누르면 is_checked 가 True인 Subject 들만 내부 db에 저장을 해주세요.
-         *
-         */
     }
 
 

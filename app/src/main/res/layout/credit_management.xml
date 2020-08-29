@@ -10,7 +10,7 @@
         android:id="@+id/mng"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1">
+        android:layout_weight="0.15">
 
         <ImageView
             android:layout_width="match_parent"
@@ -25,14 +25,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7">
+        android:layout_weight="0.75">
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:stretchColumns="1"
+            android:stretchColumns="*"
+            android:paddingTop="0dp"
             android:layout_centerVertical="true">
 
             <TableRow
@@ -83,6 +84,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/elect1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -92,6 +94,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/elect2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -115,6 +118,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/design"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -149,6 +153,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/bsm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -183,6 +188,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/majorrq1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -192,6 +198,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/majorrq2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -216,6 +223,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/major1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -225,6 +233,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/major2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -249,6 +258,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/general1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -258,6 +268,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/general2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -282,6 +293,7 @@
                     android:background="#00000000"/>
 
                 <TextView
+                    android:id="@+id/fin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="12dp"
@@ -310,7 +322,7 @@
         android:id="@+id/menuBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.07"
+        android:layout_weight="0.08"
         android:background="#FFFFFF">
 
         <LinearLayout

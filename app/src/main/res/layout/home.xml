@@ -6,55 +6,64 @@
     android:layout_height="match_parent"
     android:background="@color/colorStd"
     android:orientation="vertical"
+    android:weightSum="1"
     tools:context=".MainActivity"
     tools:ignore="MissingDefaultResource">
 
     <RelativeLayout
         android:id="@+id/homeBox"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5">
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/whitesymbol"
-            android:layout_marginBottom="0dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="170dp"
-            android:layout_centerHorizontal="true"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/whitesymbol" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/bntBox"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.5">
+        android:layout_weight="0.5"
+        android:gravity="center">
 
         <Button
             android:id="@+id/timetable_bnt"
-            android:text="학기별 시간표"
-            android:textSize="30sp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="240dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="150dp"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/spinner_bnt"/>
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/selector_pressed"
+            android:paddingStart="25dp"
+            android:paddingTop="25dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="25dp"
+            android:text="학기별 시간표"
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/grade_bnt"
-            android:text="학점 관리"
-            android:textSize="30sp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="120dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/timetable_bnt"
             android:layout_centerHorizontal="true"
-            android:background="@drawable/listrec"/>
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="80dp"
+            android:background="@drawable/listrec"
+            android:paddingStart="25dp"
+            android:paddingTop="25dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="25dp"
+            android:text="학점 관리"
+            android:textSize="30sp" />
 
     </RelativeLayout>
 

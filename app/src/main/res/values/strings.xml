@@ -1,13 +1,22 @@
 <resources>
     <string name="app_name">DoYouWantToGraduate</string>
-    <string name="num14">14 학번</string>
-    <string name="num1516">15 / 16 학번</string>
-    <string name="num1718">17 / 18 학번</string>
-    <string name="num19">19 학번</string>
-    <string name="complete">확인</string>
+    <string name="num14">14 / 15 / 16 학번</string>
+    <string name="num1516">17 / 18 학번</string>
+    <string name="num1718">19 학번</string>
+    <string name="num19">20 학번</string>
+    <string name="number_complete">확인</string>
+    <string name="sem1_1">1 - 1</string>
+    <string name="sem1_2">1 - 2</string>
+    <string name="sem2_1">2 - 1</string>
+    <string name="sem2_2">2 - 2</string>
+    <string name="sem3_1">3 - 1</string>
+    <string name="sem3_2">3 - 2</string>
+    <string name="sem4_1">4 - 1</string>
+    <string name="sem4_2">4 - 2</string>
     <string name="sem_add">일반선택 / 교양</string>
     <string name="subject">과목명</string>
     <string name="bsm">BSM</string>
+    <string name="complete">확인</string>
     <string name="plan">설계</string>
     <string name="num">학점</string>
     <string name="state">구분</string>
