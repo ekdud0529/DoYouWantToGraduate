@@ -158,26 +158,26 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/timet_bnt"
-                android:layout_weight="1"
+                android:id="@+id/fin_bnt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:src="@drawable/calendar"
-                android:background="#FFFFFF"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/human" />
 
             <ImageButton
-                android:id="@+id/fin_bnt"
-                android:layout_weight="1"
+                android:id="@+id/set_bnt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:src="@drawable/human"
-                android:background="#FFFFFF"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/setting" />
 
         </LinearLayout>
 
