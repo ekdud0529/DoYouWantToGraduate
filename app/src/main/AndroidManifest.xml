@@ -26,6 +26,7 @@
         <activity android:name=".activity_timetable11" />
         <activity android:name=".MainActivity"/>
         <activity android:name="activity_mng"/>
+        <activity android:name=".settingActivity"/>
     </application>
 
 </manifest>

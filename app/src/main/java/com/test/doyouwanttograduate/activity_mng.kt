@@ -28,8 +28,8 @@ class activity_mng : AppCompatActivity(){
         }
 
         set_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@activity_mng, settingActivity::class.java)
-            startActivity(intent_tbnt)
+            val  intent_setbnt = Intent(this@activity_mng, settingActivity::class.java)
+            startActivity(intent_setbnt)
         }
 
     }
