@@ -27,6 +27,7 @@ class addActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_subject)
 
+        // edittext에 추가할 과목 받아서 db에 저장, 불러오기 시도
         name_edt.setOnClickListener() {
             val name = name_edt.text.toString().trim()
             val bsm = bsm_edt.text.toString().trim()

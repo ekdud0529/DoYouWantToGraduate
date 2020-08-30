@@ -19,7 +19,7 @@ class MainListAdapter(
     private val database by lazy { FirebaseDatabase.getInstance() }
     private val subjectRef = database.getReference("doyouwanttograduate-fe6c6")
 
-
+    //firebase에서 list불러오기 시도..
     init {
         data class subject(
             var name: String? = "",
