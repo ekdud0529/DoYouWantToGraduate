@@ -30,7 +30,7 @@ class activity_timetable11 : AppCompatActivity() {
         }
 
         set_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@activity_timetable11, settingActivity::class.java)
+            val  intent_tbnt = Intent(this@activity_timetable11, activity_setting::class.java)
             startActivity(intent_tbnt)
         }
 

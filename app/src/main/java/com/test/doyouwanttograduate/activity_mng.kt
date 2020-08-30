@@ -15,8 +15,6 @@ class activity_mng : AppCompatActivity(){
         val number:Int = pref.getInt("grade", 0)
 
 
-
-
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@activity_mng, activity_home::class.java)
             startActivity(intent_hbnt)
@@ -28,7 +26,7 @@ class activity_mng : AppCompatActivity(){
         }
 
         set_bnt.setOnClickListener{
-            val  intent_setbnt = Intent(this@activity_mng, settingActivity::class.java)
+            val  intent_setbnt = Intent(this@activity_mng, activity_setting::class.java)
             startActivity(intent_setbnt)
         }
 
