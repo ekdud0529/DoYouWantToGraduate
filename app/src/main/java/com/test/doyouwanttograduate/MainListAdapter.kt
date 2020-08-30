@@ -8,13 +8,40 @@ import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 class MainListAdapter(
     val context: Context, val grade: Int, val semester: Int
 ) : BaseAdapter() {
     private var subjectList: ArrayList<Subject>? = null
 
+    private val database by lazy { FirebaseDatabase.getInstance() }
+    private val subjectRef = database.getReference("doyouwanttograduate-fe6c6")
+
+
     init {
+        data class subject(
+            var name: String? = "",
+            var bsm: String? = "",
+            var plan: String? = "",
+            var num: String? = "",
+            var state: String? ="",
+            var is_checked: Boolean? = false
+        )
+        subjectRef.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+            override fun onDataChange(p0: DataSnapshot) {
+                for (snapshot in p0.children) {
+                    if (snapshot.key.equals("name")) {
+                        subject.name = snapshot.value
+                    }
+                    else{
+                    }
+                }
+            }
+        }})
 
 
         subjectList = null
@@ -25,8 +52,7 @@ class MainListAdapter(
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-        val view: View = LayoutInflater.from(context)
-            .inflate(R.layout.list_item, null) // inflater 가 getView 에 있으면 성능이 많이 하락합니다.
+        val view: View = LayoutInflater.from(context).inflate(R.layout.list_item, null) // inflater 가 getView 에 있으면 성능이 많이 하락합니다.
 
         val name = view.findViewById<TextView>(R.id.subjectNameTv)
         val bsm = view.findViewById<TextView>(R.id.subjectBsmTv)

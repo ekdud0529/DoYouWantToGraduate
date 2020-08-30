@@ -13,7 +13,7 @@
     <string name="sem3_2">3 - 2</string>
     <string name="sem4_1">4 - 1</string>
     <string name="sem4_2">4 - 2</string>
-    <string name="sem_add">일반선택 / 교양</string>
+    <string name="sem_add">일선 / 교양</string>
     <string name="subject">과목명</string>
     <string name="bsm">BSM</string>
     <string name="complete">확인</string>
@@ -21,6 +21,7 @@
     <string name="num">학점</string>
     <string name="state">구분</string>
     <string name="subCheck">선택</string>
-    <string name="bt_click">#FFE91E63</string>
+    <string name="bt_click">#EF9BB7</string>
+
 
 </resources>

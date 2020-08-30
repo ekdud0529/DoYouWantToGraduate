@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorStd"
     android:orientation="vertical"
-    tools:context=".addSubjectActivity">
+    tools:context=".addActivity">
 
 
     <RelativeLayout
@@ -150,7 +150,7 @@
 
 
                         <EditText
-                            android:id="@+id/subject_edt"
+                            android:id="@+id/name_edt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -235,10 +235,10 @@
             android:id="@+id/add_complete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:text="@string/complete"
+            android:layout_centerHorizontal="true"
             android:background="@drawable/listrec"
+            android:text="@string/complete"
             android:textSize="20sp"
             android:textStyle="bold" />
 
