@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Splash"
     android:gravity="center"
-    android:background="#70E1EF">
+    android:background="@color/colorStd">
 
 
     <com.github.ybq.android.spinkit.SpinKitView
@@ -15,6 +15,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:SpinKit_Color="#1A92ED" />
+        app:SpinKit_Color="@color/coloryell" />
 
 </LinearLayout>

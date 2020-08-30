@@ -91,6 +91,7 @@ class SubjectListActivity : AppCompatActivity() {
 
 
 
+        // 추가해야되는거 : 과목 여러개 선택하고 확인 누르면 그 내용이 timetable_??로 가는거 (넘어온 timetable_학년학기 정보를 저장해야할거 같음!)
 
 
 

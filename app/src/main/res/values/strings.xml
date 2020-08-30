@@ -22,6 +22,8 @@
     <string name="state">구분</string>
     <string name="subCheck">선택</string>
     <string name="bt_click">#EF9BB7</string>
+    <string name="it_list">학과과목</string>
+    <string name="delete">삭제</string>
 
 
 </resources>

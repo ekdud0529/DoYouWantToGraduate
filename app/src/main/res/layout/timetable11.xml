@@ -189,14 +189,14 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="0.34">
 
         <Button
-            android:id="@+id/add"
+            android:id="@+id/etc_add"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="15dp"
             android:layout_centerHorizontal="true"
@@ -210,19 +210,40 @@
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="0.33">
 
             <Button
-                android:id="@+id/choice_click"
+                android:id="@+id/subject_add"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="50dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="@string/complete"
+                android:text="@string/it_list"
+                android:background="@drawable/addbtrec"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.33">
+
+            <Button
+                android:id="@+id/delete_bt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="@string/delete"
                 android:background="@drawable/listrec"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -280,15 +301,15 @@
                 android:scaleType="fitCenter"/>
 
             <ImageButton
-                android:id="@+id/fin_bnt"
-                android:layout_weight="1"
+                android:id="@+id/set_bnt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:src="@drawable/human"
-                android:background="#FFFFFF"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/setting" />
 
         </LinearLayout>
 

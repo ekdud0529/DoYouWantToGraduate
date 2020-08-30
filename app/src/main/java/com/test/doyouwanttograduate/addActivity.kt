@@ -27,7 +27,7 @@ class addActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_subject)
 
-        // edittext에 추가할 과목 받아서 db에 저장, 불러오기 시도
+        // edittext에 추가할 과목 받아서 db에 저장, 불러오기 시도..try..
         name_edt.setOnClickListener() {
             val name = name_edt.text.toString().trim()
             val bsm = bsm_edt.text.toString().trim()
@@ -73,8 +73,13 @@ class addActivity : AppCompatActivity() {
                 listRefresh()
             }
 
+
+
+
+
             add_complete.setOnClickListener {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, activity_timetable11::class.java)
+                             // 여기서도 직전에 넘어온 timetable의 학년학기 정보를 받아서 거기로 돌아가야함!
                 startActivity(intent)
             }
         }
@@ -99,27 +104,7 @@ class addActivity : AppCompatActivity() {
             }
         }
 
-        fun listRefresh(){
-            list.removeAll{true}
 
-            var valuelistener = object: ValueEventListener{
-                override fun onCancelled(error: DatabaseError) {}
-                override fun onDataChange(snapshot: DataSnapshot) {
-
-                    if(snapshot.exists()){
-                        for(rt in snapshot.children){
-                            var subject = rt.getValue((Subject::class.java))
-                            list.add(subject!!)
-
-                        }
-                    }
-
-                    tableListView.adapter= lstAdp()
-
-                }
-            }
-            ref.addValueEventListener(valuelistener)
-        }
 
 
 
@@ -135,13 +120,31 @@ class addActivity : AppCompatActivity() {
             startActivity(intent_tbnt)
         }
 
-        fin_bnt.setOnClickListener{
+        set_bnt.setOnClickListener{
             val  intent_fbnt = Intent(this@addActivity, activity_mng::class.java)
             startActivity(intent_fbnt)
         }
     }
 
     private fun listRefresh() {
+        list.removeAll{true}
 
+        var valuelistener = object: ValueEventListener{
+            override fun onCancelled(error: DatabaseError) {}
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                if(snapshot.exists()){
+                    for(rt in snapshot.children){
+                        var subject = rt.getValue((Subject::class.java))
+                        list.add(subject!!)
+
+                    }
+                }
+
+                tableListView.adapter= lstAdp()   // 이건 왜 오류나는 거지? 흠?
+
+            }
+        }
+        ref.addValueEventListener(valuelistener)
     }
 }
