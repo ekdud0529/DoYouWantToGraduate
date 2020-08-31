@@ -146,5 +146,9 @@ class addActivity : AppCompatActivity() {
             }
         }
         ref.addValueEventListener(valuelistener)
+
+        // something is changed.
+        Toast.makeText(applicationContext,"", Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext,"", Toast.LENGTH_LONG).show()
     }
 }
