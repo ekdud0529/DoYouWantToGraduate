@@ -371,7 +371,7 @@
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:scaleType="fitCenter"
-                android:src="@drawable/setting" />
+                android:src="@drawable/setting"/>
 
         </LinearLayout>
 
