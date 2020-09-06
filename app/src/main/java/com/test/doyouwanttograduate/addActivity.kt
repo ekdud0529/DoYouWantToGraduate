@@ -7,10 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Toast
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.fin_bnt
 import kotlinx.android.synthetic.main.activity_main.home_bnt
@@ -20,8 +16,6 @@ import kotlinx.android.synthetic.main.timetable11.*
 
 class addActivity : AppCompatActivity() {
 
-    var list: MutableList<Subject> = mutableListOf()
-    val ref = FirebaseDatabase.getInstance().getReference()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,20 +52,7 @@ class addActivity : AppCompatActivity() {
             }
 
 
-            val idx = ref.push().key
-            val subject = Subject(idx.toString(),name,bsm,plan,num,state,false???)
 
-            ref.child(idx.toString()).setValue(subject).addOnCompleteListener(){
-                Toast.makeText(applicationContext, "complete", Toast.LENGTH_SHORT).show()
-                name_edt.text.clear()
-                bsm_edt.text.clear()
-                plan_edt.text.clear()
-                num_edt.text.clear()
-                state_edt.text.clear()
-
-
-                listRefresh()
-            }
 
 
 
@@ -84,25 +65,7 @@ class addActivity : AppCompatActivity() {
             }
         }
 
-        class lstAdp : BaseAdapter(){
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
-
-
-            }
-
-            override fun getItem(p0: Int): Any? {
-                return null
-            }
-
-            override fun getItemId(p0: Int): Long {
-                return 0
-            }
-
-            override fun getCount():Int{
-                return list.size
-            }
-        }
 
 
 
@@ -126,29 +89,5 @@ class addActivity : AppCompatActivity() {
         }
     }
 
-    private fun listRefresh() {
-        list.removeAll{true}
 
-        var valuelistener = object: ValueEventListener{
-            override fun onCancelled(error: DatabaseError) {}
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                if(snapshot.exists()){
-                    for(rt in snapshot.children){
-                        var subject = rt.getValue((Subject::class.java))
-                        list.add(subject!!)
-
-                    }
-                }
-
-                tableListView.adapter= lstAdp()   // 이건 왜 오류나는 거지? 흠?
-
-            }
-        }
-        ref.addValueEventListener(valuelistener)
-
-        // something is changed.
-        Toast.makeText(applicationContext,"", Toast.LENGTH_LONG).show()
-        Toast.makeText(applicationContext,"", Toast.LENGTH_LONG).show()
-    }
 }

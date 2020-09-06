@@ -79,14 +79,14 @@ class SubjectListActivity : AppCompatActivity() {
             //행 넘버 변수 만들기
             var rowno = 0
             //MutableList 생성
-            var xls_items11: MutableList<Subject> = mutableListOf()
-            var xls_items12: MutableList<Subject> = mutableListOf()
-            var xls_items21: MutableList<Subject> = mutableListOf()
-            var xls_items22: MutableList<Subject> = mutableListOf()
-            var xls_items31: MutableList<Subject> = mutableListOf()
-            var xls_items32: MutableList<Subject> = mutableListOf()
-            var xls_items41: MutableList<Subject> = mutableListOf()
-            var xls_items42: MutableList<Subject> = mutableListOf()
+            val xls_items11: MutableList<Subject> = mutableListOf()
+            val xls_items12: MutableList<Subject> = mutableListOf()
+            val xls_items21: MutableList<Subject> = mutableListOf()
+            val xls_items22: MutableList<Subject> = mutableListOf()
+            val xls_items31: MutableList<Subject> = mutableListOf()
+            val xls_items32: MutableList<Subject> = mutableListOf()
+            val xls_items41: MutableList<Subject> = mutableListOf()
+            val xls_items42: MutableList<Subject> = mutableListOf()
 
             //행 반복문
             while (rowIter.hasNext()) {
