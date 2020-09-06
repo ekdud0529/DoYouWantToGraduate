@@ -27,6 +27,8 @@ class activity_setting : AppCompatActivity(){
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
         select.setOnClickListener {
+            // Todo : switch로 변경하자
+
             if(num_selector.selectedItem == "14/15/16 학번"){
                 editor.putInt("grade", 14)
                 if(editor.commit()){
@@ -67,16 +69,19 @@ class activity_setting : AppCompatActivity(){
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@activity_setting, activity_home::class.java)
             startActivity(intent_hbnt)
+            overridePendingTransition(0, 0)
         }
 
         fin_bnt.setOnClickListener{
             val  intent_fbnt = Intent(this@activity_setting, activity_mng::class.java)
             startActivity(intent_fbnt)
+            overridePendingTransition(0, 0)
         }
 
         set_bnt.setOnClickListener{
             val  intent_tbnt = Intent(this@activity_setting, activity_setting::class.java)
             startActivity(intent_tbnt)
+            overridePendingTransition(0, 0)
         }
 
     }

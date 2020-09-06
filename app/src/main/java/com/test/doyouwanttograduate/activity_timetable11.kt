@@ -40,14 +40,14 @@ class activity_timetable11 : AppCompatActivity() {
             startActivity(intent_hbnt)
         }
 
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@activity_timetable11, activity_mng::class.java)
-            startActivity(intent_fbnt)
-        }
-
         set_bnt.setOnClickListener{
             val  intent_tbnt = Intent(this@activity_timetable11, activity_setting::class.java)
             startActivity(intent_tbnt)
+        }
+
+        fin_bnt.setOnClickListener{
+            val  intent_fbnt = Intent(this@activity_timetable11, activity_mng::class.java)
+            startActivity(intent_fbnt)
         }
 
     }
