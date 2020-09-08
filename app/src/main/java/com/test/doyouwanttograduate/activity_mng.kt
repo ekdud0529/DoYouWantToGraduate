@@ -20,7 +20,7 @@ class activity_mng : AppCompatActivity(){
         val number:Int = pref.getInt("grade", 0)
 
         val database = Firebase.database
-        val numRef = database.getReference("$number")
+        var numRef = database.getReference("$number")
 
         numRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(num: DataSnapshot) {
@@ -30,6 +30,8 @@ class activity_mng : AppCompatActivity(){
                 var majrqMin = num.child("majrqmin").getValue()
 
                 elect2.setText("$electMin / $electMax")
+                majorrq2.setText("$majrqMin")
+                major2.setText("$majMin")
             }
 
             override fun onCancelled(error: DatabaseError) {
