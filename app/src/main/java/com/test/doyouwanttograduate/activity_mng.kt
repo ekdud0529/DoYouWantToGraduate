@@ -24,10 +24,10 @@ class activity_mng : AppCompatActivity(){
 
         numRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(num: DataSnapshot) {
-                var electMin = num.child("electmin").getValue()
-                var electMax = num.child("electmax").getValue()
-                var majMin = num.child("majmin").getValue()
-                var majrqMin = num.child("majrqmin").getValue()
+                var electMin = num.child("$number").child("electmin").getValue()
+                var electMax = num.child("$number").child("electmax").getValue()
+                var majMin = num.child("$number").child("majmin").getValue()
+                var majrqMin = num.child("$number").child("majrqmin").getValue()
 
                 elect2.setText("$electMin / $electMax")
                 majorrq2.setText("$majrqMin")
