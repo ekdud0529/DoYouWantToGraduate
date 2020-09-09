@@ -15,6 +15,11 @@ class activity_timetable11 : AppCompatActivity() {
 
         //과목 선택해서 저장한 리스트 정보 받아와 여기 timetable의 리스트뷰에 뿌려야됨 !
 
+        subject_add.setOnClickListener {
+            val intent = Intent(this@activity_timetable11, SubjectListActivity::class.java)
+            startActivity(intent)
+        }
+
       /*
 
 
