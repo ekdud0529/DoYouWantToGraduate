@@ -15,6 +15,11 @@ class activity_timetable11 : AppCompatActivity() {
 
         //과목 선택해서 저장한 리스트 정보 받아와 여기 timetable의 리스트뷰에 뿌려야됨 !
 
+        subject_add.setOnClickListener {
+            val intent = Intent(this@activity_timetable11, SubjectListActivity::class.java)
+            startActivity(intent)
+        }
+
       /*
 
 
@@ -38,16 +43,19 @@ class activity_timetable11 : AppCompatActivity() {
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@activity_timetable11, activity_home::class.java)
             startActivity(intent_hbnt)
-        }
-
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@activity_timetable11, activity_mng::class.java)
-            startActivity(intent_fbnt)
+            overridePendingTransition(0, 0)
         }
 
         set_bnt.setOnClickListener{
             val  intent_tbnt = Intent(this@activity_timetable11, activity_setting::class.java)
             startActivity(intent_tbnt)
+            overridePendingTransition(0, 0)
+        }
+
+        fin_bnt.setOnClickListener{
+            val  intent_fbnt = Intent(this@activity_timetable11, activity_mng::class.java)
+            startActivity(intent_fbnt)
+            overridePendingTransition(0, 0)
         }
 
     }
