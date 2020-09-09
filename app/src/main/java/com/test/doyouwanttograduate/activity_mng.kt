@@ -1,4 +1,3 @@
-
 package com.test.doyouwanttograduate
 
 import android.content.Context
@@ -11,25 +10,30 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.credit_management.*
 
-class activity_mng : AppCompatActivity(){
+class activity_mng : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.credit_management)
 
         val pref = getSharedPreferences("setting", Context.MODE_PRIVATE)
-        val number:Int = pref.getInt("grade", 0)
+        val number: Int = pref.getInt("grade", 0)
+
+        Log.d("Test grade", "$number")
 
         val database = Firebase.database
-        var numRef = database.getReference("$number")
+        var numRef = database.reference
+        numRef = numRef.child("number").child("$number")
 
-        numRef.addValueEventListener(object : ValueEventListener{
+        numRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(num: DataSnapshot) {
-                var electMin = num.child("$number").child("electmin").getValue()
-                var electMax = num.child("$number").child("electmax").getValue()
-                var majMin = num.child("$number").child("majmin").getValue()
-                var majrqMin = num.child("$number").child("majrqmin").getValue()
+                Log.d("Test value", "${num.value}")
 
-                elect2.setText("$electMin / $electMax")
+                val electMin = num.child("electmin").value as Long
+                val electMax = num.child("electmax").value as Long
+                val majMin = num.child("majmin").value as Long
+                val majrqMin = num.child("majrqmin").value as Long
+
+                elect2.setText("${electMin / electMax}")
                 majorrq2.setText("$majrqMin")
                 major2.setText("$majMin")
             }
@@ -42,20 +46,20 @@ class activity_mng : AppCompatActivity(){
 
 
 
-        home_bnt.setOnClickListener{
-            val  intent_hbnt = Intent(this@activity_mng, activity_home::class.java)
+        home_bnt.setOnClickListener {
+            val intent_hbnt = Intent(this@activity_mng, activity_home::class.java)
             startActivity(intent_hbnt)
             overridePendingTransition(0, 0)
         }
 
-        fin_bnt.setOnClickListener{
-            val  intent_fbnt = Intent(this@activity_mng, activity_mng::class.java)
+        fin_bnt.setOnClickListener {
+            val intent_fbnt = Intent(this@activity_mng, activity_mng::class.java)
             startActivity(intent_fbnt)
             overridePendingTransition(0, 0)
         }
 
-        set_bnt.setOnClickListener{
-            val  intent_setbnt = Intent(this@activity_mng, activity_setting::class.java)
+        set_bnt.setOnClickListener {
+            val intent_setbnt = Intent(this@activity_mng, activity_setting::class.java)
             startActivity(intent_setbnt)
             overridePendingTransition(0, 0)
         }
