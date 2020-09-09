@@ -12,7 +12,7 @@ import android.widget.TextView
 class MainListAdapter(
     val context: Context, val grade: ArrayList<Subject>
 ) : BaseAdapter() {
-    private var subjectList: ArrayList<Subject>? = null
+    private var subjectList: ArrayList<Subject>? = grade
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {

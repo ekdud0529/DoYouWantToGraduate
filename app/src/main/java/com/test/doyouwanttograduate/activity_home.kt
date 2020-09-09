@@ -14,11 +14,13 @@ class activity_home : AppCompatActivity(){
         timetable_bnt.setOnClickListener{
             val intent_t = Intent(this@activity_home, MainActivity::class.java)
             startActivity(intent_t)
+            overridePendingTransition(0, 0)
         }
 
         grade_bnt.setOnClickListener{
             val intent_g = Intent(this@activity_home, activity_mng::class.java)
             startActivity(intent_g)
+            overridePendingTransition(0, 0)
         }
 
     }
