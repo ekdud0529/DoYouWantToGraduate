@@ -10,8 +10,9 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.fin_bnt
 import kotlinx.android.synthetic.main.activity_main.home_bnt
-import kotlinx.android.synthetic.main.activity_main.timet_bnt
+import kotlinx.android.synthetic.main.activity_main.set_bnt
 import kotlinx.android.synthetic.main.add_subject.*
+import kotlinx.android.synthetic.main.setting.*
 import kotlinx.android.synthetic.main.timetable11.*
 
 class addActivity : AppCompatActivity() {
@@ -84,9 +85,10 @@ class addActivity : AppCompatActivity() {
             startActivity(intent_hbnt)
         }
 
-        timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@addActivity, MainActivity::class.java)
+        set_bnt.setOnClickListener{
+            val  intent_tbnt = Intent(this@addActivity, activity_setting::class.java)
             startActivity(intent_tbnt)
+            overridePendingTransition(0, 0)
         }
 
         fin_bnt.setOnClickListener{

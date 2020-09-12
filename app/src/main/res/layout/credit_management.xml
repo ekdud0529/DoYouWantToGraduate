@@ -30,14 +30,14 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:stretchColumns="*"
             android:paddingTop="0dp"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:background="@drawable/listrec">
 
-            <TableRow
-                android:background="@drawable/listrec">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -90,8 +90,7 @@
                     android:padding="12dp"
                     android:textSize="24sp"
                     android:textColor="#000000"
-                    android:gravity="center"
-                    android:background="#00000000"/>
+                    android:gravity="center"/>
 
                 <TextView
                     android:id="@+id/elect2"
@@ -100,12 +99,10 @@
                     android:padding="12dp"
                     android:textSize="24sp"
                     android:textColor="#000000"
-                    android:gravity="center"
-                    android:background="#00000000"/>
+                    android:gravity="center"/>
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -124,8 +121,7 @@
                     android:padding="12dp"
                     android:textSize="24sp"
                     android:textColor="#000000"
-                    android:gravity="center"
-                    android:background="#00000000"/>
+                    android:gravity="center"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -134,13 +130,12 @@
                     android:textSize="24sp"
                     android:text="12"
                     android:textColor="#000000"
-                    android:gravity="center"
-                    android:background="#00000000"/>
+                    android:gravity="center"/>
 
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -175,7 +170,6 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -210,7 +204,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -245,7 +239,6 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"

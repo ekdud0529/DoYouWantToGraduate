@@ -25,6 +25,7 @@
                 android:id = "@+id/logo"
                 android:adjustViewBounds="true"
                 android:layout_width="80dp"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_gravity="center"
@@ -38,6 +39,7 @@
                 android:textColor="@color/coloryell"
                 android:layout_gravity="center"
                 android:text = "학번을 선택 해주세요."
+                android:paddingStart="10dp"
                 android:layout_marginBottom="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
