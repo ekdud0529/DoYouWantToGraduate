@@ -35,7 +35,7 @@
             android:stretchColumns="*"
             android:paddingTop="0dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/listrec">
+            android:background="#9397d0">
 
             <TableRow>
                 <TextView

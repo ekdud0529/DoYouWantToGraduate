@@ -310,7 +310,7 @@ class SubjectListActivity : AppCompatActivity() {
         }
 
         set_bnt.setOnClickListener {
-            val intent_setbnt = Intent(this@activity_mng, activity_setting::class.java)
+            val intent_setbnt = Intent(this@SubjectListActivity, activity_setting::class.java)
             startActivity(intent_setbnt)
             overridePendingTransition(0, 0)
         }
