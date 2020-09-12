@@ -7,13 +7,13 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.TextView
+import kotlinx.android.synthetic.main.activity_subject_list.*
 
 
 class MainListAdapter(
     val context: Context, val grade: ArrayList<Subject>
-) : BaseAdapter() {
+    ) : BaseAdapter() {
     private var subjectList: ArrayList<Subject>? = grade
-
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
@@ -28,6 +28,7 @@ class MainListAdapter(
 
         val subject = subjectList!![position]
 
+
         name.text = subject.name
         bsm.text = subject.bsm
         plan.text = subject.plan
@@ -36,19 +37,31 @@ class MainListAdapter(
 
         //check 박스 상태 표시. (스크롤시 화면 보이기(처리 없을시 아래 리스너에서 바꿔도 원래 대로 돌아와요.))
         if (subjectList!![position].is_checked) {
-            check.text = "ok"
+            check.text = "v"
+            subjectList!![position].is_checked = true
         } else {
             check.text = ""
+            subjectList!![position].is_checked = false
         }
+
+
+
+
 
 
         check.setOnClickListener() {
             if (subjectList!![position].is_checked) {
                 check.text = ""
+                subjectList!![position].is_checked = false
             } else {
-                check.text = "ok"
+                check.text = "v"
+                subjectList!![position].is_checked = true
             }
+
+
             subjectList!![position].is_checked = !subjectList!![position].is_checked
+
+
 
             //TODO: 여러가지 방법이 있는데 여기서는 간단하게 진행해보겠습니다.
 

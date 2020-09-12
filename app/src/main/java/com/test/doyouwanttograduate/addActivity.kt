@@ -22,13 +22,18 @@ class addActivity : AppCompatActivity() {
         setContentView(R.layout.add_subject)
 
         // edittext에 추가할 과목 받아서 db에 저장, 불러오기 시도..try..
-        name_edt.setOnClickListener() {
-            val name = name_edt.text.toString().trim()
-            val bsm = bsm_edt.text.toString().trim()
-            val plan = plan_edt.text.toString().trim()
-            val num = num_edt.text.toString().trim()
-            val state = state_edt.text.toString().trim()
 
+        val name = name_edt.text.toString().trim()
+        val bsm = bsm_edt.text.toString().trim()
+        val plan = plan_edt.text.toString().trim()
+        val num = num_edt.text.toString().trim()
+        val state = state_edt.text.toString().trim()
+
+
+
+
+        add_complete.setOnClickListener {
+            val intent = Intent(this, activity_timetable11::class.java)
 
             if(name.isEmpty()){
                 name_edt.error = "Please insert name"
@@ -37,32 +42,33 @@ class addActivity : AppCompatActivity() {
 
             if(bsm.isEmpty()){
                 bsm_edt.error = "Please insert bsm"
+                return@setOnClickListener
             }
 
             if(plan.isEmpty()){
                 plan_edt.error = "Please insert plan"
+                return@setOnClickListener
             }
 
             if(num.isEmpty()){
                 num_edt.error = "Please insert num"
+                return@setOnClickListener
             }
 
             if(state.isEmpty()){
                 state_edt.error = "Please insert state"
+                return@setOnClickListener
             }
 
 
 
+            // 적은 정보 가지고 해당 학년 학기 timetable에 넣기
 
 
 
 
 
-            add_complete.setOnClickListener {
-                val intent = Intent(this, activity_timetable11::class.java)
-                             // 여기서도 직전에 넘어온 timetable의 학년학기 정보를 받아서 거기로 돌아가야함!
-                startActivity(intent)
-            }
+            startActivity(intent)
         }
 
 
@@ -83,7 +89,7 @@ class addActivity : AppCompatActivity() {
             startActivity(intent_tbnt)
         }
 
-        set_bnt.setOnClickListener{
+        fin_bnt.setOnClickListener{
             val  intent_fbnt = Intent(this@addActivity, activity_mng::class.java)
             startActivity(intent_fbnt)
         }
