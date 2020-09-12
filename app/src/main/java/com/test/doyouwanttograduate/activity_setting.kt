@@ -27,22 +27,29 @@ class activity_setting : AppCompatActivity(){
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
         select.setOnClickListener {
+
             var t1 = Toast.makeText(this, "학번을 선택해주세요", Toast.LENGTH_SHORT)
+            var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
 
             when(num_selector.selectedItem){
-                "14 / 15 / 16 학번"
-                -> editor.putInt("grade", 14)
-                "17 / 18 학번" -> editor.putInt("grade", 17)
-                "19 학번" -> editor.putInt("grade", 19)
-                "20 학번" -> editor.putInt("grade", 20)
+                "14 / 15 / 16 학번" -> {
+                    editor.putInt("grade", 14)
+                    if(editor.commit()) complete.show()
+                }
+                "17 / 18 학번" -> {
+                    editor.putInt("grade", 17)
+                    if(editor.commit()) complete.show()
+                }
+                "19 학번" -> {
+                    editor.putInt("grade", 19)
+                    if(editor.commit()) complete.show()
+                }
+                "20 학번" -> {
+                    editor.putInt("grade", 20)
+                    if(editor.commit()) complete.show()
+                }
                 else -> t1.show()
             }
-
-            if(editor.commit()){
-                    var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
-                    complete.show()
-            }
-
         }
 
         home_bnt.setOnClickListener{
