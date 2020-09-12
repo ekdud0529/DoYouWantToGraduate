@@ -35,7 +35,7 @@
             android:stretchColumns="*"
             android:paddingTop="0dp"
             android:layout_centerVertical="true"
-            android:background="#9397d0">
+            android:background="@drawable/listrec">
 
             <TableRow>
                 <TextView
@@ -71,7 +71,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -135,7 +135,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
@@ -204,7 +204,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
+                android:background="#F7F2D1"
                 android:layout_marginTop="5dp">
                 <TextView
                     android:layout_width="match_parent"
