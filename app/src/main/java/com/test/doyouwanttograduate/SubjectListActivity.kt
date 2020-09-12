@@ -13,7 +13,8 @@ import kotlinx.android.synthetic.main.activity_subject_list.g_s_complete
 import kotlinx.android.synthetic.main.activity_subject_list.grade_sel
 import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
 import kotlinx.android.synthetic.main.activity_subject_list.semester_sel
-import kotlinx.android.synthetic.main.activity_subject_list.timet_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.set_bnt
+import kotlinx.android.synthetic.main.credit_management.*
 import kotlinx.android.synthetic.main.list_item.*
 import kotlinx.android.synthetic.main.timetable11.*
 import org.apache.poi.hssf.usermodel.HSSFCell
@@ -303,14 +304,15 @@ class SubjectListActivity : AppCompatActivity() {
             startActivity(intent_hbnt)
         }
 
-        timet_bnt.setOnClickListener {
-            val intent_tbnt = Intent(this@SubjectListActivity, MainActivity::class.java)
-            startActivity(intent_tbnt)
-        }
-
         fin_bnt.setOnClickListener {
             val intent_fbnt = Intent(this@SubjectListActivity, activity_mng::class.java)
             startActivity(intent_fbnt)
+        }
+
+        set_bnt.setOnClickListener {
+            val intent_setbnt = Intent(this@activity_mng, activity_setting::class.java)
+            startActivity(intent_setbnt)
+            overridePendingTransition(0, 0)
         }
 
     }
