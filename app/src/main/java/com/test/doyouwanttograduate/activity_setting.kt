@@ -27,12 +27,11 @@ class activity_setting : AppCompatActivity(){
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
         select.setOnClickListener {
-            // Todo : switch로 변경하자
-
             var t1 = Toast.makeText(this, "학번을 선택해주세요", Toast.LENGTH_SHORT)
 
             when(num_selector.selectedItem){
-                "14 / 15 / 16 학번" -> editor.putInt("grade", 14)
+                "14 / 15 / 16 학번"
+                -> editor.putInt("grade", 14)
                 "17 / 18 학번" -> editor.putInt("grade", 17)
                 "19 학번" -> editor.putInt("grade", 19)
                 "20 학번" -> editor.putInt("grade", 20)
