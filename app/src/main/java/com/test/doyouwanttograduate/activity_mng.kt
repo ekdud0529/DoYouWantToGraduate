@@ -5,9 +5,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-//import com.google.firebase.database.*
-//import com.google.firebase.database.ktx.database
-//import com.google.firebase.ktx.Firebase
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.credit_management.*
 
 class activity_mng : AppCompatActivity() {
@@ -20,7 +22,7 @@ class activity_mng : AppCompatActivity() {
 
         Log.d("Test grade", "$number")
 
-        /*
+
         val database = Firebase.database
         var numRef = database.reference
         numRef = numRef.child("number").child("$number")
@@ -43,7 +45,7 @@ class activity_mng : AppCompatActivity() {
                 Log.w("activity_mng", "Failed to read value", error.toException())
             }
         })
-*/
+
 
         home_bnt.setOnClickListener {
             val intent_hbnt = Intent(this@activity_mng, activity_home::class.java)

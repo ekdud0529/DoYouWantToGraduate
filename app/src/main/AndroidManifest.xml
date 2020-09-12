@@ -22,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity_setting"/>
         <activity android:name=".activity_home"/>
         <activity android:name=".NumberChoice" />
         <activity android:name=".activity_timetable11" />

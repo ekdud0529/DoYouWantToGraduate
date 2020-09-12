@@ -29,42 +29,22 @@ class activity_setting : AppCompatActivity(){
         select.setOnClickListener {
             // Todo : switch로 변경하자
 
-            if(num_selector.selectedItem == "14/15/16 학번"){
-                editor.putInt("grade", 14)
-                if(editor.commit()){
+            var t1 = Toast.makeText(this, "학번을 선택해주세요", Toast.LENGTH_SHORT)
+
+            when(num_selector.selectedItem){
+                "14 / 15 / 16 학번" -> editor.putInt("grade", 14)
+                "17 / 18 학번" -> editor.putInt("grade", 17)
+                "19 학번" -> editor.putInt("grade", 19)
+                "20 학번" -> editor.putInt("grade", 20)
+                else -> t1.show()
+            }
+
+            if(editor.commit()){
                     var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
                     complete.show()
-                }
-            }
-            else if(num_selector.selectedItem == "17/18 학번"){
-                editor.putInt("grade", 17)
-                if(editor.commit()){
-                    var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
-                    complete.show()
-                }
-            }
-            else if(num_selector.selectedItem == "19 학번"){
-                editor.putInt("grade", 19)
-                if(editor.commit()){
-                    var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
-                    complete.show()
-                }
-            }
-            else if(num_selector.selectedItem == "20 학번"){
-                editor.putInt("grade", 20)
-                if(editor.commit()){
-                    var complete = Toast.makeText(this, "학번이 변경되었습니다.", Toast.LENGTH_SHORT)
-                    complete.show()
-                }
-            }
-            else{
-                var t1 = Toast.makeText(this, "학번을 선택해주세요", Toast.LENGTH_SHORT)
-                t1.show()
             }
 
         }
-
-
 
         home_bnt.setOnClickListener{
             val  intent_hbnt = Intent(this@activity_setting, activity_home::class.java)
