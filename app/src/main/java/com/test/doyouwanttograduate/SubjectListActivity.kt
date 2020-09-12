@@ -4,12 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_subject_list.*
 import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.g_s_complete
+import kotlinx.android.synthetic.main.activity_subject_list.grade_sel
 import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.semester_sel
 import kotlinx.android.synthetic.main.activity_subject_list.timet_bnt
+import kotlinx.android.synthetic.main.list_item.*
+import kotlinx.android.synthetic.main.timetable11.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
@@ -17,39 +23,16 @@ import org.apache.poi.poifs.filesystem.POIFSFileSystem
 import java.io.InputStream
 
 
+
 class SubjectListActivity : AppCompatActivity() {
-
-   /* var subjectList_11 = arrayListOf<com.test.doyouwanttograduate.Subject>(
-
-        Subject("수학1", "o","0","3","교양","false"),
-        Subject("일반물리학1", "o","0","3","교양",false),
-        Subject("일반물리학실험1", "o","0","1","교양",false),
-        Subject("실용영어", "x","0","3","교양",false),
-        Subject("프리젠테이션기법의이해" , "x","0","3","교양",false),
-        Subject("철학의이해", "x","0","3","교양",false),
-        Subject("컴퓨터프로그래밍의기초", "x","0","3","교양",false)
-
-    )
-
-    var subjectList_12 = arrayListOf<com.test.doyouwanttograduate.Subject>(
-
-        Subject("수학2", "o","0","3","교양",false),
-        Subject("영어회화", "x","0","3","교양",false),
-        Subject("글쓰기", "x","0","3","교양",false),
-        Subject("경영과창업의이해", "x","0","3","교양",false),
-        Subject("c언어기초" , "x","0","3","교양",false),
-        Subject("디지털논리공학(~18)", "x","0","3","교양",false),
-        Subject("디지털논리설계(19~)", "x","0","3","전선",false)
-
-    )  */
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject_list)
 
+
         //학기 학년 선택 스피너
-        val gradeEtc = resources.getStringArray(R.array.gradeEtc)
+        val gradeEtc = resources.getStringArray(R.array.grade)
         val semester = resources.getStringArray(R.array.semester)
 
         val adapt1 = ArrayAdapter<String>(this@SubjectListActivity, android.R.layout.simple_list_item_1, gradeEtc)
@@ -106,26 +89,26 @@ class SubjectListActivity : AppCompatActivity() {
                     //열 반복문
                     while (cellIter.hasNext()) {
                         val myCell = cellIter.next() as HSSFCell
-                        if (colno == 1) {//2번째 열이라면,
+                        if (colno == 0) {//2번째 열이라면,
                             name = myCell.toString()
                         }
-                        else if (colno == 2) {//3번째 열이라면,
+                        else if (colno == 1) {//3번째 열이라면,
                             bsm = myCell.toString()
                         }
-                        else if ( colno == 3) {
+                        else if ( colno == 2) {
                             plan = myCell.toString()
                         }
-                        else if ( colno == 4) {
+                        else if ( colno == 3) {
                             num = myCell.toString()
                         }
-                        else if ( colno == 5) {
+                        else if ( colno == 4) {
                             state = myCell.toString()
                         }
 
                         colno++
                     }
 
-                    if(rowno >= 1 && rowno <= 12){
+                    if(rowno >= 0 && rowno <= 12){
                         xls_items11.add(Subject(name, bsm, plan, num, state, checked))
                     }
                     else if(rowno >= 13 && rowno <= 20){
@@ -149,7 +132,6 @@ class SubjectListActivity : AppCompatActivity() {
                     else if(rowno >= 52 && rowno <= 57){
                         xls_items42.add(Subject(name, bsm, plan, num, state, checked))
                     }
-
                 }
                 rowno++
             }
@@ -158,8 +140,7 @@ class SubjectListActivity : AppCompatActivity() {
 
 
 
-
-
+            //과목 리스트 뿌리기
             g_s_complete.setOnClickListener(){
                 if(grade_sel.selectedItem == "1학년") {
                     if(semester_sel.selectedItem == "1학기") {
@@ -213,15 +194,99 @@ class SubjectListActivity : AppCompatActivity() {
 
 
 
+            val items11: MutableList<Subject> = mutableListOf()
+            val items12: MutableList<Subject> = mutableListOf()
+            val items21: MutableList<Subject> = mutableListOf()
+            val items22: MutableList<Subject> = mutableListOf()
+            val items31: MutableList<Subject> = mutableListOf()
+            val items32: MutableList<Subject> = mutableListOf()
+            val items41: MutableList<Subject> = mutableListOf()
+            val items42: MutableList<Subject> = mutableListOf()
+
+
+
+            //체크된 리스트 table로 뿌리기
+            choice_click.setOnClickListener() {
+
+                val secondIntent = intent
+                val grade = secondIntent.getStringExtra("grade")
+                val sem = secondIntent.getStringExtra("semester")
+
+                if(grade == "1학년") {
+                    if(sem == "1학기") {
+                        val listAdapter = MainListAdapter(this, xls_items11 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        /*for (i in listAdapter.count - 1 downTo 0) {
+                            if (xls_items11[i].is_checked) {
+                                items11.add(Subject(xls_items11[i].name, ))
+
+
+                                Log.d("선택된 아이템 추가", i.toString())
+                                items.removeAt(i)
+                            }
+
+                        }
+
+                        adapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        listView.clearChoices()*/
+
+
+                    }
+                }
+                if(grade == "1학년") {
+                    if(sem == "2학기") {
+                        val listAdapter = MainListAdapter(this, xls_items12 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "2학년") {
+                    if(sem == "1학기") {
+                        val listAdapter = MainListAdapter(this, xls_items21 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "2학년") {
+                    if(sem == "2학기") {
+                        val listAdapter = MainListAdapter(this, xls_items22 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "3학년") {
+                    if(sem == "1학기") {
+                        val listAdapter = MainListAdapter(this, xls_items31 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "3학년") {
+                    if(sem == "2학기") {
+                        val listAdapter = MainListAdapter(this, xls_items32 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "4학년") {
+                    if(sem == "1학기") {
+                        val listAdapter = MainListAdapter(this, xls_items41 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+                if(grade == "4학년") {
+                    if(sem == "2학기") {
+                        val listAdapter = MainListAdapter(this, xls_items42 as ArrayList<Subject>)
+                        tableListView.adapter = listAdapter
+                    }
+                }
+
+            }
+
+
+
         } catch (e: Exception) {
             Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
         }
-
-
-
-
-
-
 
 
 
