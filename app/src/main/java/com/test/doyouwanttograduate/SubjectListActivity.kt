@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_subject_list.grade_sel
 import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
 import kotlinx.android.synthetic.main.activity_subject_list.semester_sel
 import kotlinx.android.synthetic.main.activity_subject_list.timet_bnt
+import kotlinx.android.synthetic.main.credit_management.view.*
 import kotlinx.android.synthetic.main.list_item.*
 import kotlinx.android.synthetic.main.timetable11.*
 import org.apache.poi.hssf.usermodel.HSSFCell
@@ -140,7 +141,7 @@ class SubjectListActivity : AppCompatActivity() {
 
 
 
-            //과목 리스트 뿌리기
+            //해당 학년, 학기 따라 지정된 과목 리스트 뿌리기
             g_s_complete.setOnClickListener(){
                 if(grade_sel.selectedItem == "1학년") {
                     if(semester_sel.selectedItem == "1학기") {
@@ -194,89 +195,779 @@ class SubjectListActivity : AppCompatActivity() {
 
 
 
-            val items11: MutableList<Subject> = mutableListOf()
-            val items12: MutableList<Subject> = mutableListOf()
-            val items21: MutableList<Subject> = mutableListOf()
-            val items22: MutableList<Subject> = mutableListOf()
-            val items31: MutableList<Subject> = mutableListOf()
-            val items32: MutableList<Subject> = mutableListOf()
-            val items41: MutableList<Subject> = mutableListOf()
-            val items42: MutableList<Subject> = mutableListOf()
-
 
 
             //체크된 리스트 table로 뿌리기
             choice_click.setOnClickListener() {
 
+                val items11: MutableList<Subject> = mutableListOf()
+                val items12: MutableList<Subject> = mutableListOf()
+                val items21: MutableList<Subject> = mutableListOf()
+                val items22: MutableList<Subject> = mutableListOf()
+                val items31: MutableList<Subject> = mutableListOf()
+                val items32: MutableList<Subject> = mutableListOf()
+                val items41: MutableList<Subject> = mutableListOf()
+                val items42: MutableList<Subject> = mutableListOf()
+
                 val secondIntent = intent
                 val grade = secondIntent.getStringExtra("grade")
                 val sem = secondIntent.getStringExtra("semester")
 
+
+                // 받아온 학년, 학기에 따라
                 if(grade == "1학년") {
                     if(sem == "1학기") {
-                        val listAdapter = MainListAdapter(this, xls_items11 as ArrayList<Subject>)
+                        //내가 둘러보고 있는 지정 과목 리스트 학년 학기에 따라
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                // 체크된 과목들을 확인
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        //체크됐으면 리스트에 추가
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("2학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("2학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("3학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("3학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("4학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items11.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("4학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        // 다 추가하고 그걸 timetable리스트뷰에 뿌리기
+                        val listAdapter = MainListAdapter(this, items11 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
                         //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
 
-                        /*for (i in listAdapter.count - 1 downTo 0) {
-                            if (xls_items11[i].is_checked) {
-                                items11.add(Subject(xls_items11[i].name, ))
-
-
-                                Log.d("선택된 아이템 추가", i.toString())
-                                items.removeAt(i)
-                            }
-
-                        }
-
-                        adapter.notifyDataSetChanged()
+                        listAdapter.notifyDataSetChanged()
 
                         // 선택 초기화
-                        listView.clearChoices()*/
+                        mainListView.clearChoices()
 
 
                     }
                 }
                 if(grade == "1학년") {
                     if(sem == "2학기") {
-                        val listAdapter = MainListAdapter(this, xls_items12 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("2학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("2학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("3학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("3학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("4학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items12.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("4학년 2학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items12 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
+
+
                     }
                 }
                 if(grade == "2학년") {
                     if(sem == "1학기") {
-                        val listAdapter = MainListAdapter(this, xls_items21 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items21.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items22 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
                     }
                 }
+
                 if(grade == "2학년") {
                     if(sem == "2학기") {
-                        val listAdapter = MainListAdapter(this, xls_items22 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items22.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items22 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
+
                     }
                 }
+
                 if(grade == "3학년") {
                     if(sem == "1학기") {
-                        val listAdapter = MainListAdapter(this, xls_items31 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items31.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items31 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
                     }
                 }
                 if(grade == "3학년") {
                     if(sem == "2학기") {
-                        val listAdapter = MainListAdapter(this, xls_items32 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items32.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items32 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
                     }
                 }
                 if(grade == "4학년") {
                     if(sem == "1학기") {
-                        val listAdapter = MainListAdapter(this, xls_items41 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items41.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items41 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
                     }
                 }
                 if(grade == "4학년") {
                     if(sem == "2학기") {
-                        val listAdapter = MainListAdapter(this, xls_items42 as ArrayList<Subject>)
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items11.size - 1 downTo 0) {
+                                    if (xls_items11[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "1학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items12.size - 1 downTo 0) {
+                                    if (xls_items12 [i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items21.size - 1 downTo 0) {
+                                    if (xls_items21[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "2학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items22.size - 1 downTo 0) {
+                                    if (xls_items22[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items31.size - 1 downTo 0) {
+                                    if (xls_items31[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "3학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items32.size - 1 downTo 0) {
+                                    if (xls_items32[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "1학기") {
+                                for (i in xls_items41.size - 1 downTo 0) {
+                                    if (xls_items41[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+                        if(grade_sel.selectedItem == "4학년") {
+                            if(semester_sel.selectedItem == "2학기") {
+                                for (i in xls_items42.size - 1 downTo 0) {
+                                    if (xls_items42[i].is_checked) {
+                                        items42.add(Subject(xls_items11[i].name, xls_items11[i].bsm, xls_items11[i].plan, xls_items11[i].num, xls_items11[i].state,xls_items11[i].is_checked))
+                                        Log.d("1학년 1학기 선택된 아이템 추가", i.toString())
+                                    }
+                                }
+                            }
+                        }
+
+                        val listAdapter = MainListAdapter(this, items42 as ArrayList<Subject>)
                         tableListView.adapter = listAdapter
+                        //tableListView.choiceMode = ListView.CHOICE_MODE_MULTIPLE
+
+                        listAdapter.notifyDataSetChanged()
+
+                        // 선택 초기화
+                        mainListView.clearChoices()
                     }
                 }
 
