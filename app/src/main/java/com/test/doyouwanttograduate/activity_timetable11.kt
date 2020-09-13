@@ -1,8 +1,11 @@
 package com.test.doyouwanttograduate
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,7 +22,9 @@ import kotlinx.android.synthetic.main.timetable11.semester_sel
 import kotlinx.android.synthetic.main.timetable11.set_bnt
 
 
+@Suppress("UNCHECKED_CAST")
 class activity_timetable11 : AppCompatActivity() {
+    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.timetable11)
@@ -35,15 +40,8 @@ class activity_timetable11 : AppCompatActivity() {
         grade_sel.adapter = adapt1
         semester_sel.adapter = adapt2
 
-
-
-
-
-        //기타 과목 입력 받는 화면으로 이동
-        etc_add.setOnClickListener{
-            val intent_etc = Intent(this@activity_timetable11, addActivity::class.java)
-            startActivity(intent_etc)
-        }
+        //tableListView에 띄울 list
+        val table_items: MutableList<Subject> = mutableListOf()
 
 
 
@@ -51,21 +49,53 @@ class activity_timetable11 : AppCompatActivity() {
         // 스피너 저장 확인 버튼 처리
         g_s_complete.setOnClickListener{
 
-            /* SubjectListActivity에 timetable의 학년과 학기 정보 넘겨주자
-            val intent = Intent(applicationContext, SubjectListActivity::class.java)
-            intent.putExtra("grade", "grade")
-            intent.putExtra("semester", semester_sel.selectedItem)
-            */
+            val listAdapter = MainListAdapter(this, table_items as ArrayList<Subject>)
+            tableListView.adapter = listAdapter
+
+            /*** 0. 선택한 grade와 semester db에 저장 ***/
+            val sharedPreferences = getSharedPreferences("table_setting", Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
+
+            editor.putStringSet("grade", grade_sel.selectedItem as MutableSet<String>?)
+            editor.putStringSet("semester", semester_sel.selectedItem as MutableSet<String>?)
+
+
+            editor.apply()
+            Log.e("tag","시간표 정보 저장 완료")
+
+
+            //기타 과목 입력 받는 화면으로 이동
+            etc_add.setOnClickListener{
+                val intent_etc = Intent(this@activity_timetable11, addActivity::class.java)
+                startActivity(intent_etc)
+            }
+
+
+            /*** 1. edittext에서 받아온 체크된 리스트 불러와서 timetable에 뿌려주기 ***/
+
+
+            //edittext에서 저장한 db불러오기
+            val pref = getSharedPreferences("edit_setting", Context.MODE_PRIVATE)
+            val name = pref.getString("name", "")
+            val bsm = pref.getString("bsm", "")
+            val plan = pref.getString("plan", "")
+            val num = pref.getString("num", "")
+            val state = pref.getString("state", "")
+            val grade = pref.getString("grade","")
+            val sem = pref.getString("semester","")
+
+
+            table_items.add(Subject(name.toString(), bsm.toString(), plan.toString(), num.toString(), state.toString(), true, grade.toString(), sem.toString()))
 
 
 
 
-
-
-
-
-
-            /*** subjectListActivity에서 받아온 체크된 리스트 불러와서 timetable에 뿌려주기 ***/
+            /*** 2. subjectListActivity에서 받아온 체크된 리스트 불러와서 timetable에 뿌려주기
+             *
+             * //여기서 json으로 리스트 가져오기 실패하면 그냥 각각 재료로 가져오자. 그게 add하기 나을수도 ?
+             *
+             *
+             * ***/
 
             //Json 으로 만들기 위한 Gson
             var makeGson = GsonBuilder().create()
@@ -80,11 +110,18 @@ class activity_timetable11 : AppCompatActivity() {
             // 변환
             val datas : ArrayList<Subject> = makeGson.fromJson(strContact,listType.type)
 
+            //여기서 합쳐줘야 하는데 아직 방법 모루겠음
 
-            val listAdapter = MainListAdapter(this, datas)
+
             tableListView.adapter = listAdapter
 
         }
+
+
+
+
+
+
 
 
 

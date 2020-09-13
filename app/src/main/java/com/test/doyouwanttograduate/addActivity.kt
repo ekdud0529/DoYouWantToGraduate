@@ -30,14 +30,11 @@ class addActivity : AppCompatActivity() {
         val plan = plan_edt.text.toString().trim()
         val num = num_edt.text.toString().trim()
         val state = state_edt.text.toString().trim()
-        val grade = ""
-        val semester = ""
-        val is_checked = true
 
 
 
         add_complete.setOnClickListener {
-            val intent = Intent(this, activity_timetable11::class.java)
+            val intent_add = Intent(this@addActivity, activity_timetable11::class.java)
 
             if(name.isEmpty()){
                 name_edt.error = "Please insert name"
@@ -61,8 +58,14 @@ class addActivity : AppCompatActivity() {
             }
 
 
+            /** 시간표 학년 학기 정보 불러오기 **/
+            val pref = getSharedPreferences("table_setting", Context.MODE_PRIVATE)
+            val grade = pref.getString("grade", "")
+            val sem = pref.getString("sem", "")
 
-            // 적은 정보 가지고 해당 학년 학기 timetable에 넣기
+
+
+            /** edittext에 적은 내용 db에 저장하기 **/
             val sharedPreferences = getSharedPreferences("edit_setting", Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
@@ -71,10 +74,14 @@ class addActivity : AppCompatActivity() {
             editor.putString("plan", plan)
             editor.putString("num", num)
             editor.putString("state", state)
+            editor.putString("grade", grade)
+            editor.putString("semester", sem)
+
+            editor.apply()
 
 
+            startActivity(intent_add)
 
-            startActivity(intent)
         }
 
 
