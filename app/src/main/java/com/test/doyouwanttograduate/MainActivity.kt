@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.fin_bnt
+import kotlinx.android.synthetic.main.activity_main.home_bnt
+import kotlinx.android.synthetic.main.activity_main.set_bnt
+import kotlinx.android.synthetic.main.setting.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,14 +42,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent_hbnt)
         }
 
-        timet_bnt.setOnClickListener{
-            val  intent_tbnt = Intent(this@MainActivity, MainActivity::class.java)
-            startActivity(intent_tbnt)
-        }
-
         fin_bnt.setOnClickListener{
             val  intent_fbnt = Intent(this@MainActivity, activity_mng::class.java)
             startActivity(intent_fbnt)
+        }
+
+        set_bnt.setOnClickListener{
+            val  intent_tbnt = Intent(this@MainActivity, activity_setting::class.java)
+            startActivity(intent_tbnt)
+            overridePendingTransition(0, 0)
         }
 
     }

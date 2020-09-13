@@ -9,6 +9,10 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_subject_list.*
+import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.set_bnt
+import kotlinx.android.synthetic.main.add_subject.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
