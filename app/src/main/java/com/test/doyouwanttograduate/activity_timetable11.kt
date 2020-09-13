@@ -1,10 +1,13 @@
 package com.test.doyouwanttograduate
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.fin_bnt
 import kotlinx.android.synthetic.main.activity_main.home_bnt
@@ -13,7 +16,7 @@ import kotlinx.android.synthetic.main.timetable11.*
 import kotlinx.android.synthetic.main.timetable11.g_s_complete
 import kotlinx.android.synthetic.main.timetable11.grade_sel
 import kotlinx.android.synthetic.main.timetable11.semester_sel
-import kotlinx.android.synthetic.main.timetable11.timet_bnt
+import kotlinx.android.synthetic.main.timetable11.set_bnt
 
 
 class activity_timetable11 : AppCompatActivity() {
@@ -35,82 +38,57 @@ class activity_timetable11 : AppCompatActivity() {
 
 
 
+
         //기타 과목 입력 받는 화면으로 이동
         etc_add.setOnClickListener{
             val intent_etc = Intent(this@activity_timetable11, addActivity::class.java)
             startActivity(intent_etc)
         }
 
-        // 스피너에서 학년 학기 선택하면 해당 학년, 학기 데이터 전송하기
+
+
+
+        // 스피너 저장 확인 버튼 처리
         g_s_complete.setOnClickListener{
 
-            // SubjectListActivity에 timetable의 학년과 학기 정보 넘겨주기
+            /* SubjectListActivity에 timetable의 학년과 학기 정보 넘겨주자
             val intent = Intent(applicationContext, SubjectListActivity::class.java)
-
-            if(grade_sel.selectedItem == "1학년") {
-                if(semester_sel.selectedItem == "1학기") {
-                    intent.putExtra("grade", "1학년")
-                    intent.putExtra("semester", "1학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "1학년") {
-                if(semester_sel.selectedItem == "2학기") {
-                    intent.putExtra("grade", "1학년")
-                    intent.putExtra("semester", "2학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "2학년") {
-                if(semester_sel.selectedItem == "1학기") {
-                    intent.putExtra("grade", "2학년")
-                    intent.putExtra("semester", "1학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "2학년") {
-                if(semester_sel.selectedItem == "2학기") {
-                    intent.putExtra("grade", "2학년")
-                    intent.putExtra("semester", "2학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "3학년") {
-                if(semester_sel.selectedItem == "1학기") {
-                    intent.putExtra("grade", "3학년")
-                    intent.putExtra("semester", "1학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "3학년") {
-                if(semester_sel.selectedItem == "2학기") {
-                    intent.putExtra("grade", "3학년")
-                    intent.putExtra("semester", "2학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "4학년") {
-                if(semester_sel.selectedItem == "1학기") {
-                    intent.putExtra("grade", "4학년")
-                    intent.putExtra("semester", "1학기")
-                    startActivity(intent)
-                }
-            }
-            if(grade_sel.selectedItem == "4학년") {
-                if(semester_sel.selectedItem == "2학기") {
-                    intent.putExtra("grade", "4학년")
-                    intent.putExtra("semester", "2학기")
-                    startActivity(intent)
-                }
-            }
+            intent.putExtra("grade", "grade")
+            intent.putExtra("semester", semester_sel.selectedItem)
+            */
 
 
-            //일단 빈 리스트 연결
-            var subjectList = arrayListOf<Subject>()
-            val listAdapter = MainListAdapter(this, subjectList)
+
+
+
+
+
+
+
+            /*** subjectListActivity에서 받아온 체크된 리스트 불러와서 timetable에 뿌려주기 ***/
+
+            //Json 으로 만들기 위한 Gson
+            var makeGson = GsonBuilder().create()
+
+            // 저장 타입 지정
+            var listType : TypeToken<MutableList<Subject>> = object : TypeToken<MutableList<Subject>>() {}
+
+            // 데이터를 Json 형태로 변환
+            var sp = getSharedPreferences("list_setting", Context.MODE_PRIVATE)
+            var strContact = sp.getString("checked_list", "")
+
+            // 변환
+            val datas : ArrayList<Subject> = makeGson.fromJson(strContact,listType.type)
+
+
+            val listAdapter = MainListAdapter(this, datas)
             tableListView.adapter = listAdapter
 
         }
+
+
+
+
 
         subject_add.setOnClickListener{
             val intent_subadd = Intent(this@activity_timetable11, SubjectListActivity::class.java)
@@ -132,7 +110,7 @@ class activity_timetable11 : AppCompatActivity() {
             overridePendingTransition(0, 0)
         }
 
-        timet_bnt.setOnClickListener{
+        set_bnt.setOnClickListener{
             val  intent_tbnt = Intent(this@activity_timetable11, MainActivity::class.java)
             startActivity(intent_tbnt)
         }

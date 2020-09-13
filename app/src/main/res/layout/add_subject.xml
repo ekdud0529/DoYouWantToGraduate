@@ -16,13 +16,14 @@
         android:layout_weight="0.2">
 
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/whitesymbol"
-            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="160dp"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="350dp"
-            android:layout_centerHorizontal="true"/>
+            android:background="@drawable/whitesymbol" />
 
     </RelativeLayout>
 
@@ -251,7 +252,7 @@
         android:id="@+id/menuBox"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.09"
+        android:layout_weight="0.08"
         android:background="#FFFFFF">
 
         <LinearLayout
@@ -280,6 +281,17 @@
                 android:src="@drawable/browser" />
 
             <ImageButton
+                android:id="@+id/timet_bnt"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/calendar" />
+
+            <ImageButton
                 android:id="@+id/fin_bnt"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -289,17 +301,6 @@
                 android:background="#FFFFFF"
                 android:scaleType="fitCenter"
                 android:src="@drawable/human" />
-
-            <ImageButton
-                android:id="@+id/set_bnt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:background="#FFFFFF"
-                android:scaleType="fitCenter"
-                android:src="@drawable/setting" />
 
         </LinearLayout>
 

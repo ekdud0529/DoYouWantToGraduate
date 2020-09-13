@@ -13,10 +13,6 @@ import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
 import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
 import kotlinx.android.synthetic.main.activity_subject_list.set_bnt
 import kotlinx.android.synthetic.main.add_subject.*
-import kotlinx.android.synthetic.main.activity_subject_list.semester_sel
-import kotlinx.android.synthetic.main.credit_management.view.*
-import kotlinx.android.synthetic.main.list_item.*
-import kotlinx.android.synthetic.main.timetable11.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
