@@ -4,19 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.GsonBuilder
-import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_subject_list.*
+import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
+import kotlinx.android.synthetic.main.activity_subject_list.set_bnt
+import kotlinx.android.synthetic.main.add_subject.*
 import org.apache.poi.hssf.usermodel.HSSFCell
 import org.apache.poi.hssf.usermodel.HSSFRow
 import org.apache.poi.hssf.usermodel.HSSFWorkbook
 import org.apache.poi.poifs.filesystem.POIFSFileSystem
-import org.json.JSONArray
 import java.io.InputStream
 
 
@@ -121,54 +121,31 @@ class SubjectListActivity : AppCompatActivity() {
                 val listAdapter = MainListAdapter(this, xls_items as ArrayList<Subject>)
                 mainListView.adapter = listAdapter
 
-
-
-                /*** 체크 다하고 확인 버튼 처리 ***/
+                //체크된 리스트 table로 뿌리기
                 choice_click.setOnClickListener(){
+                    val sharedPreferences = getSharedPreferences("setting", Context.MODE_PRIVATE)
+                    val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
                     val count: Int = listAdapter.getCount()
 
-                    val userLocalData = this.getSharedPreferences("list_setting", Context.MODE_PRIVATE)
-                    val editor = userLocalData!!.edit()
-                    editor.clear()
-                    editor.apply()
-
-                    //Json 으로 만들기 위한 Gson
-                    var makeGson = GsonBuilder().create()
-
-                    // 저장 타입 지정
-                    var listType : TypeToken<MutableList<Subject>> = object : TypeToken<MutableList<Subject>>() {}
-
-                    var save_num : Int = 0
-
-                    //체크된 리스트 로컬 db에 저장하기
                     for (i in count - 1 downTo 0) {
                         if (xls_items[i].is_checked) {
-                            // 데이터를 Json 형태로 변환
-                            var strContact = makeGson.toJson(xls_items[i], listType.type)
-                            editor.putString("checked_list", strContact) // Json 으로 변환한 객체 저장
-                            editor.commit() // 완료
-
-                            save_num++
+                            editor.putString("name", xls_items[i].name)
+                            editor.putString("bsm", xls_items[i].bsm)
+                            editor.putString("plan", xls_items[i].plan)
+                            editor.putString("num", xls_items[i].num)
+                            editor.putString("state", xls_items[i].state)
+                            editor.putString("grade", xls_items[i].grade)
+                            editor.putString("semester", xls_items[i].semester)
                         }
                     }
 
 
-                    /*** 몇번 보내는지 저장 (이부분 잘 모르겠음 .. json으로 리스트 한개를 저장하는거 같아서 ? 흠..)***/
-                    val sharedPreferences = getSharedPreferences("save_num_setting", Context.MODE_PRIVATE)
-                    val save_num_editor: SharedPreferences.Editor = sharedPreferences.edit()
-
-                    save_num_editor.putInt("save_num", save_num)
-                    save_num_editor.commit()
-
-
-                    // 모든 선택 상태 초기화. (이거 필요 없나 ?)
+                    // 모든 선택 상태 초기화.
                     mainListView.clearChoices()
+
                     listAdapter.notifyDataSetChanged()
-
                 }
-
-
             }
 
 
@@ -185,7 +162,8 @@ class SubjectListActivity : AppCompatActivity() {
             val intent_hbnt = Intent(this@SubjectListActivity, activity_home::class.java)
             startActivity(intent_hbnt)
         }
-        set_bnt.setOnClickListener {
+
+        timet_bnt.setOnClickListener {
             val intent_tbnt = Intent(this@SubjectListActivity, MainActivity::class.java)
             startActivity(intent_tbnt)
         }
@@ -197,11 +175,4 @@ class SubjectListActivity : AppCompatActivity() {
 
     }
 
-
-
-
-
-
 }
-
-

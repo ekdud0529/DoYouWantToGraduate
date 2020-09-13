@@ -27,24 +27,24 @@ class activity_mng : AppCompatActivity() {
         var numRef = database.reference
         numRef = numRef.child("number").child("$number")
 
-//        numRef.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(num: DataSnapshot) {
-//                Log.d("Test value", "${num.value}")
-//
-//                val electMin = num.child("electmin").value as Long
-//                val electMax = num.child("electmax").value as Long
-//                val majMin = num.child("majmin").value as Long
-//                val majrqMin = num.child("majrqmin").value as Long
-//
-//                elect2.setText("${electMin / electMax}")
-//                majorrq2.setText("$majrqMin")
-//                major2.setText("$majMin")
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.w("activity_mng", "Failed to read value", error.toException())
-//            }
-//        })
+        numRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(num: DataSnapshot) {
+                Log.d("Test value", "${num.value}")
+
+                val electMin = num.child("electmin").value as Long
+                val electMax = num.child("electmax").value as Long
+                val majMin = num.child("majmin").value as Long
+                val majrqMin = num.child("majrqmin").value as Long
+
+                elect2.setText("${electMin / electMax}")
+                majorrq2.setText("$majrqMin")
+                major2.setText("$majMin")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("activity_mng", "Failed to read value", error.toException())
+            }
+        })
 
 
         home_bnt.setOnClickListener {
