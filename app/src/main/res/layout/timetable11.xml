@@ -88,10 +88,9 @@
                     android:id="@+id/g_s_complete"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_centerHorizontal="true"
+                    android:layout_centerInParent="true"
                     android:background="@drawable/listrec"
                     android:text="@string/complete" />
-
 
 
             </RelativeLayout>
