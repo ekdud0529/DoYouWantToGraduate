@@ -1,6 +1,8 @@
 package com.test.doyouwanttograduate
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -22,14 +24,15 @@ class addActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.add_subject)
 
-        // edittext에 추가할 과목 받아서 db에 저장, 불러오기 시도..try..
 
         val name = name_edt.text.toString().trim()
         val bsm = bsm_edt.text.toString().trim()
         val plan = plan_edt.text.toString().trim()
         val num = num_edt.text.toString().trim()
         val state = state_edt.text.toString().trim()
-
+        val grade = ""
+        val semester = ""
+        val is_checked = true
 
 
 
@@ -40,22 +43,18 @@ class addActivity : AppCompatActivity() {
                 name_edt.error = "Please insert name"
                 return@setOnClickListener
             }
-
             if(bsm.isEmpty()){
                 bsm_edt.error = "Please insert bsm"
                 return@setOnClickListener
             }
-
             if(plan.isEmpty()){
                 plan_edt.error = "Please insert plan"
                 return@setOnClickListener
             }
-
             if(num.isEmpty()){
                 num_edt.error = "Please insert num"
                 return@setOnClickListener
             }
-
             if(state.isEmpty()){
                 state_edt.error = "Please insert state"
                 return@setOnClickListener
@@ -64,8 +63,14 @@ class addActivity : AppCompatActivity() {
 
 
             // 적은 정보 가지고 해당 학년 학기 timetable에 넣기
+            val sharedPreferences = getSharedPreferences("edit_setting", Context.MODE_PRIVATE)
+            val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
-
+            editor.putString("name", name)
+            editor.putString("bsm", bsm)
+            editor.putString("plan", plan)
+            editor.putString("num", num)
+            editor.putString("state", state)
 
 
 
