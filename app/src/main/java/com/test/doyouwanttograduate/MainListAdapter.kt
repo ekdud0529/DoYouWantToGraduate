@@ -1,6 +1,7 @@
 package com.test.doyouwanttograduate
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,10 +39,10 @@ class MainListAdapter(
         //check 박스 상태 표시. (스크롤시 화면 보이기(처리 없을시 아래 리스너에서 바꿔도 원래 대로 돌아와요.))
         if (subjectList!![position].is_checked) {
             check.text = "v"
-            subjectList!![position].is_checked = true
+
         } else {
             check.text = ""
-            subjectList!![position].is_checked = false
+
         }
 
 
@@ -52,18 +53,15 @@ class MainListAdapter(
         check.setOnClickListener() {
             if (subjectList!![position].is_checked) {
                 check.text = ""
-                subjectList!![position].is_checked = false
+
             } else {
                 check.text = "v"
-                subjectList!![position].is_checked = true
-            }
 
+            }
 
             subjectList!![position].is_checked = !subjectList!![position].is_checked
 
 
-
-            //TODO: 여러가지 방법이 있는데 여기서는 간단하게 진행해보겠습니다.
 
 
         }
@@ -82,3 +80,4 @@ class MainListAdapter(
         return subjectList!!.size
     }
 }
+
