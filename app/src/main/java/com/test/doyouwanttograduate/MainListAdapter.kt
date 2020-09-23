@@ -46,22 +46,14 @@ class MainListAdapter(
         }
 
 
-
-
-
-
         check.setOnClickListener() {
             if (subjectList!![position].is_checked) {
                 check.text = ""
-
             } else {
                 check.text = "v"
-
             }
 
             subjectList!![position].is_checked = !subjectList!![position].is_checked
-
-
 
 
         }
