@@ -18,7 +18,9 @@ import kotlinx.android.synthetic.main.setting.*
 import kotlinx.android.synthetic.main.timetable11.*
 
 class addActivity : AppCompatActivity() {
-
+    private var grade = listOf<Db>()
+    private var sem = listOf<semDb>()
+    private var dbDb : AppDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,51 +32,32 @@ class addActivity : AppCompatActivity() {
         val plan = plan_edt.text.toString().trim()
         val num = num_edt.text.toString().trim()
         val state = state_edt.text.toString().trim()
-        val grade = ""
-        val semester = ""
-        val is_checked = true
 
+
+        /** table 학년학기 db가져오기 **/
+
+       dbDb = AppDatabase.getInstance(this)
+
+        val addRunnable = Runnable {
+            val newDb = Db()
+            val new_semDb = semDb()
+            newDb.grade = grade_sel.selectedItem.toString()
+            new_semDb.semester = semester_sel.selectedItem.toString()
+            dbDb?.dbDao()?.insert(newDb)
+            dbDb?.dbDao()?.insert_sem(new_semDb)
+        }
+
+        val addThread = Thread(addRunnable)
+        addThread.start()
+        finish()
+
+        /** ------------------------ **/
 
 
         add_complete.setOnClickListener {
-            val intent = Intent(this, activity_timetable11::class.java)
-
-            if(name.isEmpty()){
-                name_edt.error = "Please insert name"
-                return@setOnClickListener
-            }
-            if(bsm.isEmpty()){
-                bsm_edt.error = "Please insert bsm"
-                return@setOnClickListener
-            }
-            if(plan.isEmpty()){
-                plan_edt.error = "Please insert plan"
-                return@setOnClickListener
-            }
-            if(num.isEmpty()){
-                num_edt.error = "Please insert num"
-                return@setOnClickListener
-            }
-            if(state.isEmpty()){
-                state_edt.error = "Please insert state"
-                return@setOnClickListener
-            }
+            val intent_add = Intent(this@addActivity, activity_timetable11::class.java)
 
 
-
-            // 적은 정보 가지고 해당 학년 학기 timetable에 넣기
-            val sharedPreferences = getSharedPreferences("edit_setting", Context.MODE_PRIVATE)
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
-            editor.putString("name", name)
-            editor.putString("bsm", bsm)
-            editor.putString("plan", plan)
-            editor.putString("num", num)
-            editor.putString("state", state)
-
-
-
-            startActivity(intent)
         }
 
 
