@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
-    android:background="@drawable/spinner_bnt">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/back_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/spinner_bnt"
         android:orientation="horizontal">
 
         <RelativeLayout
@@ -18,12 +22,16 @@
 
             <TextView
                 android:id="@+id/subjectNameTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:ellipsize="end"
                 android:gravity="center"
-                android:text="@string/subject"/>
+                android:lines="2"
+                android:maxLines="2"
+                android:text="@string/subject"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
 
         </RelativeLayout>
@@ -36,8 +44,9 @@
 
             <TextView
                 android:id="@+id/subjectBsmTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="@string/bsm"
                 android:textSize="15dp"
@@ -49,16 +58,19 @@
             android:id="@+id/plan_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.15">
+            android:layout_weight="0.15"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/subjectPlanTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/plan"/>
+                android:text="@string/plan"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -66,16 +78,19 @@
             android:id="@+id/num_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.15">
+            android:layout_weight="0.15"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/subjectNumTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/num"/>
+                android:text="@string/num"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -83,16 +98,19 @@
             android:id="@+id/state_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.15">
+            android:layout_weight="0.15"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <TextView
                 android:id="@+id/subjectStateTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/state"/>
+                android:text="@string/state"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -102,12 +120,15 @@
             android:layout_height="match_parent"
             android:layout_weight="0.15">
 
-            <Button
+            <ImageButton
                 android:id="@+id/checkbt"
-                android:layout_width="10dp"
-                android:layout_height="15dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_centerInParent="true"
-                android:background="@drawable/listrec" />
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:padding="5dp"
+                android:src="@drawable/listrec" />
 
         </RelativeLayout>
 

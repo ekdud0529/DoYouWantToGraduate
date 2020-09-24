@@ -16,7 +16,8 @@
     <string name="sem_add">일선 / 교양</string>
     <string name="subject">과목명</string>
     <string name="bsm">BSM</string>
-    <string name="complete">확인</string>
+    <string name="search">조회</string>
+    <string name="complete">내 과목으로 추가</string>
     <string name="plan">설계</string>
     <string name="num">학점</string>
     <string name="state">구분</string>
