@@ -1,178 +1,129 @@
 package com.test.doyouwanttograduate
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_subject_list.*
+import kotlinx.android.synthetic.main.activity_subject_list.g_s_complete
+import kotlinx.android.synthetic.main.activity_subject_list.grade_selector
+import kotlinx.android.synthetic.main.activity_subject_list.semester_selector
 import kotlinx.android.synthetic.main.activity_subject_list.fin_bnt
 import kotlinx.android.synthetic.main.activity_subject_list.home_bnt
-import kotlinx.android.synthetic.main.add_subject.*
-import org.apache.poi.hssf.usermodel.HSSFCell
-import org.apache.poi.hssf.usermodel.HSSFRow
-import org.apache.poi.hssf.usermodel.HSSFWorkbook
-import org.apache.poi.poifs.filesystem.POIFSFileSystem
-import java.io.InputStream
+import kotlinx.android.synthetic.main.activity_subject_list.set_bnt
+import kotlinx.android.synthetic.main.timetable.*
+import java.lang.Exception
 
 
 class SubjectListActivity : AppCompatActivity() {
-    private var dbDb : AppDatabase? = null
-    private var grade = listOf<grade_Db>()
-    private var sem = listOf<sem_Db>()
+
+    var selectedGrade: Int? = null
+    var selectedSemester: Int? = null
+    var mdb: AppDatabase? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_subject_list)
 
-        dbDb = AppDatabase.getInstance(this)
+        selectedGrade = intent.getIntExtra("selected_grade", 0)
+        selectedSemester = intent.getIntExtra("selected_semester", 0)
 
-        /** < 학기 학년 선택 spinner > **/
-        val gradeEtc = resources.getStringArray(R.array.grade)
+
+        /** < 학년 학기 spinner >  **/
+        val grade = resources.getStringArray(R.array.grade)
         val semester = resources.getStringArray(R.array.semester)
 
-        val adapt1 = ArrayAdapter<String>(this@SubjectListActivity, android.R.layout.simple_list_item_1, gradeEtc)
-        val adapt2 = ArrayAdapter<String>(this@SubjectListActivity, android.R.layout.simple_list_item_1, semester)
+        val adapt1 = ArrayAdapter<String>(
+            this@SubjectListActivity,
+            android.R.layout.simple_list_item_1,
+            grade
+        )
+        val adapt2 = ArrayAdapter<String>(
+            this@SubjectListActivity,
+            android.R.layout.simple_list_item_1,
+            semester
+        )
 
-        grade_sel.adapter = adapt1
-        semester_sel.adapter = adapt2
+        grade_selector.adapter = adapt1
+        semester_selector.adapter = adapt2
 
-        /** ----------------------- **/
+        // 학년 학기 선택.
+        grade_selector.setSelection(selectedGrade!!, true)
+        semester_selector.setSelection(selectedSemester!!, true)
 
-
-
-        //엑셀파일 불러오기 예외처리
-        try {
-            //확인 버튼 누르면 -> 지정된 과목 리스트 뿌리기
-            g_s_complete.setOnClickListener(){
-                val myInput: InputStream
-                // assetManager 초기 설정
-                val assetManager = assets
-                //  엑셀 시트 열기
-                myInput = assetManager.open("subject.xls")
-                // POI File System 객체 만들기
-                val myFileSystem = POIFSFileSystem(myInput)
-                //워크 북
-                val myWorkBook = HSSFWorkbook(myFileSystem)
-                // 워크북에서 시트 가져오기
-                val sheet = myWorkBook.getSheetAt(0)
-
-                //행을 반복할 변수 만들어주기
-                val rowIter = sheet.rowIterator()
-                //행 넘버 변수 만들기
-                var rowno = 0
-
-                //MutableList 생성
-                val xls_items: MutableList<Subject> = mutableListOf()
-
-                //행 반복문
-                while (rowIter.hasNext()) {
-                    val myRow = rowIter.next() as HSSFRow
-                    if (rowno != 0) {
-                        //열을 반복할 변수 만들어주기
-                        val cellIter = myRow.cellIterator()
-                        //열 넘버 변수 만들기
-                        var colno = 0
-                        var name = ""
-                        var bsm = ""
-                        var plan = ""
-                        var num = ""
-                        var state = ""
-                        var checked = false
-                        var get_grade = ""
-                        var get_semester = ""
-
-                        //열 반복문
-                        while (cellIter.hasNext()) {
-                            val myCell = cellIter.next() as HSSFCell
-                            if (colno == 0) {//2번째 열이라면,
-                                name = myCell.toString()
-                            }
-                            else if (colno == 1) {//3번째 열이라면,
-                                bsm = myCell.toString()
-                            }
-                            else if ( colno == 2) {
-                                plan = myCell.toString()
-                            }
-                            else if ( colno == 3) {
-                                num = myCell.toString()
-                            }
-                            else if ( colno == 4) {
-                                state = myCell.toString()
-                            }
-                            else if ( colno == 6) {
-                                get_grade = myCell.toString()
-                            }
-                            else if ( colno == 7) {
-                                get_semester = myCell.toString()
-                            }
-                            colno++
-                        }
-
-                        // 해당 학년학기 리스트에 엑셀 리스트 add
-                        if(get_grade == grade_sel.selectedItem && get_semester == semester_sel.selectedItem){
-                            xls_items.add(Subject(name, bsm, plan, num, state, checked, get_grade, get_semester,"",""))
-                        }
-                    }
-                    rowno++
-                }
-                Log.e("checking", " items: " + xls_items);
-
-                val listAdapter = MainListAdapter(this, xls_items as ArrayList<Subject>)
-                mainListView.adapter = listAdapter
-
-
-                //체크된 리스트 table로 뿌리기
-                choice_click.setOnClickListener(){
-                    /** < 학년 학기 db가져오기 > **/
-                    dbDb = AppDatabase.getInstance(this)
-
-                    val r = Runnable{
-                        grade = dbDb?.dbDao()?.get_grade()!!
-                        sem = dbDb?.dbDao()?.get_sem()!!
-                    }
-                    /** ----------------------- **/
-
-                    for (i in xls_items.size downTo 0) {
-                        if(xls_items[i].is_checked){
-                            val addRunnable = Runnable{
-                                val newDb = Db()
-                                newDb.name = xls_items[i].name
-                                newDb.bsm = xls_items[i].bsm
-                                newDb.plan = xls_items[i].plan
-                                newDb.num = xls_items[i].num
-                                newDb.state = xls_items[i].state
-                                newDb.is_checked = xls_items[i].is_checked
-                                newDb.grade = xls_items[i].grade
-                                newDb.semester = xls_items[i].semester
-                                newDb.t_grade = grade.toString()     /** 내가 넘어온 시간표의 학년 정보 **/
-                                newDb.t_semester = sem.toString()    /** 내가 넘어온 시간표의 학기 정보 **/
-                            }
-
-                            val addThread = Thread(addRunnable)
-                            addThread.start()
-                        }
-                    }
-
-
-                    val i = Intent(this, activity_timetable11::class.java)
-                    startActivity(i)
-                    finish()
-                }
-
-
+        //스피너 선택.
+        grade_selector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
             }
 
-        } catch (e: Exception) {
-            Toast.makeText(this, "에러 발생", Toast.LENGTH_LONG).show()
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                selectedGrade = p2
+            }
+
+        }
+        semester_selector.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                selectedSemester = p2
+            }
         }
 
+        //데이터베이스 init.
+        mdb = AppDatabase.getInstance(applicationContext)
 
 
-        // 추가해야되는거 : 과목 여러개 선택하고 확인 누르면 그 내용이 timetable_??로 가는거 (넘어온 timetable_학년학기 정보를 저장해야할거 같음!)
+        //데이터 미리 뿌리기.
+        //전체를 뿌려주려면 loadDataAll(mdb!!)
+        loadData(mdb!!, selectedGrade!!, selectedSemester!!)
+
+        //선택시 해당 데이터 가져오기.
+        g_s_complete.setOnClickListener {
+            loadData(mdb!!, selectedGrade!!, selectedSemester!!)
+        }
+
+        choice_click.setOnClickListener {
+            // 추가해야되는거 : 과목 여러개 선택하고 확인 누르면 그 내용이 timetable_??로 가는거 (넘어온 timetable_학년학기 정보를 저장해야할거 같음!)
+
+            //TODO: 체크리스트 확인.
+            if (mainListView.adapter != null) {
+                val checkedClasses =
+                    (mainListView.adapter as MainListAdapter).getCheckedClassesAsUserClass()
+                Log.d("LOG<checked classes>", checkedClasses.joinToString())
+
+                if (checkedClasses.isNotEmpty()) {
+
+                    Thread(Runnable {
+
+                        mdb!!.getDatabase().addUserClasses(*checkedClasses.toTypedArray())
+
+                        //이전 activity 로 돌아가기.
+                        setResult(Activity.RESULT_OK)
+                        finish()
+                        overridePendingTransition(0, 0)
+
+                        runOnUiThread {
+                            Toast.makeText(applicationContext, "추가 되었습니다.", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+
+                    }).start()
+
+
+                } else {
+                    Toast.makeText(applicationContext, "선택된 데이터가 없습니다.", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                Toast.makeText(applicationContext, "학년, 학기를 선택해주세요.", Toast.LENGTH_SHORT).show()
+            }
+        }
 
 
         home_bnt.setOnClickListener {
@@ -180,7 +131,7 @@ class SubjectListActivity : AppCompatActivity() {
             startActivity(intent_hbnt)
         }
 
-        timet_bnt.setOnClickListener {
+        set_bnt.setOnClickListener {
             val intent_tbnt = Intent(this@SubjectListActivity, MainActivity::class.java)
             startActivity(intent_tbnt)
         }
@@ -192,9 +143,63 @@ class SubjectListActivity : AppCompatActivity() {
 
     }
 
-    override fun onDestroy(){
+
+    override fun onDestroy() {
         AppDatabase.destroyInstance()
         super.onDestroy()
+    }
+
+    private fun loadDataAll(mdb: AppDatabase) {
+        try {
+            //데이터 뿌려주기.
+            val dataThread = Thread(Runnable {
+                val allMainClasses = mdb.getDatabase()
+                    .getAllMainClasses()
+                if (allMainClasses.isNotEmpty()) {
+                    val listAdapter =
+                        MainListAdapter(this, allMainClasses)
+
+                    runOnUiThread {
+                        mainListView.adapter = listAdapter
+                        Toast.makeText(applicationContext, "검색 완료", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(applicationContext, "가져올 데이터가 없습니다.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            })
+            dataThread.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+
+    private fun loadData(mdb: AppDatabase, selected_grade: Int, selected_semester: Int) {
+        try {
+            //데이터 뿌려주기.
+            val dataThread = Thread(Runnable {
+                val allMainClasses = mdb.getDatabase()
+                    .getMainClassesByGradeAndSemester(selected_grade, selected_semester)
+                if (allMainClasses.isNotEmpty()) {
+                    val listAdapter =
+                        MainListAdapter(this, allMainClasses)
+
+                    runOnUiThread {
+                        mainListView.adapter = listAdapter
+                        Toast.makeText(applicationContext, "검색 완료", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(applicationContext, "가져올 데이터가 없습니다.", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            })
+            dataThread.start()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
 }

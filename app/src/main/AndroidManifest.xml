@@ -22,7 +22,7 @@
         <activity android:name=".activity_setting"/>
         <activity android:name=".activity_home"/>
         <activity android:name=".NumberChoice" />
-        <activity android:name=".activity_timetable11" />
+        <activity android:name=".activity_timetable" />
         <activity android:name=".addActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name="activity_mng"/>

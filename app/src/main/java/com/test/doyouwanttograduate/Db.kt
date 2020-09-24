@@ -4,35 +4,37 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "db")
-data class Db(@PrimaryKey var id:Long?,
-              @ColumnInfo(name = "name") var name: String?,
-              @ColumnInfo(name = "bsm") var bsm: String?,
-              @ColumnInfo(name = "plan") var plan: String?,
-              @ColumnInfo(name = "num") var num: String?,
-              @ColumnInfo(name = "state") var state: String?,
-              @ColumnInfo(name = "is_checked") var is_checked: Boolean?,
-              @ColumnInfo(name = "grade") var grade: String?,
-              @ColumnInfo(name = "semester") var semester: String?,
-              @ColumnInfo(name = "grade") var t_grade: String?,
-              @ColumnInfo(name = "semester") var t_semester: String?
+
+@Entity(tableName = "table_main")
+data class MainClass(
+    @PrimaryKey
+    @ColumnInfo(name = "id") var id: Int,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "bsm") var bsm: String?,
+    @ColumnInfo(name = "plan") var plan: String?,
+    @ColumnInfo(name = "num") var num: Int?,
+    @ColumnInfo(name = "state") var state: String?,
+    @ColumnInfo(name = "grade") var grade: Int,
+    @ColumnInfo(name = "semester") var semester: Int,
+    /*
+    TODO: 사용자가 선택한 class는 지울 수 있도록 True 속성을 부여하세요.
+    DB 에서 가져오는 데이터는 False 속성을 부여하세요.
+     */
+    @ColumnInfo(name = "removable")
+    var isRemovable: Boolean
+)
 
 
-){
-    constructor(): this(null,"","","","","",false,"","","","")
-}
+@Entity(tableName = "table_user")
+data class UserClass(
+    @PrimaryKey
+    @ColumnInfo(name = "id") var id: Int,
+    @ColumnInfo(name = "name") var name: String,
+    @ColumnInfo(name = "bsm") var bsm: String?,
+    @ColumnInfo(name = "plan") var plan: String?,
+    @ColumnInfo(name = "num") var num: Int?,
+    @ColumnInfo(name = "state") var state: String?,
+    @ColumnInfo(name = "grade") var grade: Int,
+    @ColumnInfo(name = "semester") var semester: Int
+)
 
-@Entity(tableName = "grade")
-data class grade_Db(@PrimaryKey var id:Long?,
-                    @ColumnInfo(name = "grade") var grade: String?
-
-){
-    constructor(): this(null,"")
-}
-@Entity(tableName = "semester")
-data class sem_Db(@PrimaryKey var id:Long?,
-                    @ColumnInfo(name = "semester") var semester: String?
-
-){
-    constructor(): this(null,"")
-}
