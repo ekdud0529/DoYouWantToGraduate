@@ -12,10 +12,10 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_subject_list.*
 
 
-class MainListAdapter(
+class UserListAdapter(
 
     val context: Context,
-    private val classes: List<MainClass>
+    private val classes: List<UserClass>
 
 ) : BaseAdapter() {
 
@@ -58,7 +58,6 @@ class MainListAdapter(
             }
             checkList[position] = !checkList[position]
         }
-
         return view
     }
 
@@ -74,35 +73,12 @@ class MainListAdapter(
         return checkList.size
     }
 
-    fun getCheckedClasses(): List<MainClass> {
-        val tempClasses = ArrayList<MainClass>()
-
-        for ((idx, mClass) in classes.withIndex()) {
-            if (checkList[idx]) {
-                tempClasses.add(mClass)
-            }
-        }
-
-        return tempClasses
-    }
-
-    fun getCheckedClassesAsUserClass(): List<UserClass> {
+    fun getCheckedClasses(): List<UserClass> {
         val tempClasses = ArrayList<UserClass>()
 
         for ((idx, mClass) in classes.withIndex()) {
             if (checkList[idx]) {
-                tempClasses.add(
-                    UserClass(
-                        mClass.id,
-                        mClass.name,
-                        mClass.bsm,
-                        mClass.plan,
-                        mClass.num,
-                        mClass.state,
-                        mClass.grade,
-                        mClass.semester
-                    )
-                )
+                tempClasses.add(mClass)
             }
         }
 

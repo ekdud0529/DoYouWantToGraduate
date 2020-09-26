@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorStd"
     android:orientation="vertical"
-    tools:context=".SubjectListActivity">
+    tools:context=".activity_timetable">
 
     <RelativeLayout
         android:id="@+id/mng"
@@ -15,6 +15,7 @@
         android:layout_weight="0.15">
 
         <TextView
+            android:id="@+id/big_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -23,7 +24,8 @@
             android:paddingBottom="10dp"
             android:text="Class 1 - 1"
             android:textColor="#632ACA"
-            android:textSize="50sp" />
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -43,16 +45,16 @@
                 android:layout_weight="0.4">
 
                 <Spinner
-                    android:id="@+id/grade_sel"
+                    android:id="@+id/grade_selector"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/spinner_bnt"
-                    android:spinnerMode="dialog"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp" >
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/spinner_bnt"
+                    android:spinnerMode="dialog">
 
                 </Spinner>
 
@@ -64,16 +66,16 @@
                 android:layout_weight="0.4">
 
                 <Spinner
-                    android:id="@+id/semester_sel"
+                    android:id="@+id/semester_selector"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_centerHorizontal="true"
-                    android:background="@drawable/spinner_bnt"
-                    android:spinnerMode="dialog"
                     android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp">
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/spinner_bnt"
+                    android:spinnerMode="dialog">
 
                 </Spinner>
 
@@ -90,7 +92,7 @@
                     android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:background="@drawable/listrec"
-                    android:text="@string/complete" />
+                    android:text="@string/search" />
 
 
             </RelativeLayout>
@@ -120,10 +122,10 @@
                     android:id="@+id/subjectNameTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/subject"/>
+                    android:text="@string/subject"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
 
             </RelativeLayout>
@@ -131,7 +133,7 @@
             <View
                 android:layout_width="2dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorStd"/>
+                android:background="@color/colorStd" />
 
             <RelativeLayout
                 android:id="@+id/bsm_layout"
@@ -143,10 +145,10 @@
                     android:id="@+id/subjectBsmTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/bsm"/>
+                    android:text="@string/bsm"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -160,10 +162,10 @@
                     android:id="@+id/subjectPlanTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/plan"/>
+                    android:text="@string/plan"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -194,10 +196,10 @@
                     android:id="@+id/subjectStateTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/state"/>
+                    android:text="@string/state"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -211,13 +213,12 @@
                     android:id="@+id/complete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="15dp"
-                    android:textStyle="bold"
                     android:gravity="center"
-                    android:text="@string/subCheck"/>
+                    android:text="@string/subCheck"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
-
 
 
         </LinearLayout>
@@ -236,6 +237,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:choiceMode="multipleChoice"
+            android:divider="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -251,76 +253,76 @@
         android:layout_height="0dp"
         android:layout_weight="0.1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.34">
-
-        <Button
-            android:id="@+id/etc_add"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:text="@string/sem_add"
-            android:background="@drawable/addbtrec"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        </RelativeLayout>
+            android:orientation="horizontal">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33">
-
-            <Button
-                android:id="@+id/subject_add"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/it_list"
-                android:background="@drawable/addbtrec"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+                android:layout_weight="0.34">
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.33">
+                <Button
+                    android:id="@+id/etc_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/addbtrec"
+                    android:text="@string/sem_add"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-            <Button
-                android:id="@+id/delete_bt"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/delete"
-                android:background="@drawable/listrec"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:layout_weight="0.33">
 
-        </RelativeLayout>
+                <Button
+                    android:id="@+id/subject_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/addbtrec"
+                    android:text="@string/it_list"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
-    </LinearLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.33">
+
+                <Button
+                    android:id="@+id/delete_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/listrec"
+                    android:text="@string/delete"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
 
     </RelativeLayout>
@@ -343,21 +345,20 @@
                 android:id="@+id/symbol"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:layout_margin="10dp"
-                android:src="@drawable/purplesymbol"
-                />
+                android:layout_weight="1"
+                android:src="@drawable/purplesymbol" />
 
             <ImageButton
                 android:id="@+id/home_bnt"
-                android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="#FFFFFF"
-                android:src="@drawable/browser"
+                android:layout_weight="1"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"/>
+                android:background="#FFFFFF"
+                android:scaleType="fitCenter"
+                android:src="@drawable/browser" />
 
             <ImageButton
                 android:id="@+id/set_bnt"
@@ -379,7 +380,7 @@
                 android:adjustViewBounds="true"
                 android:background="#FFFFFF"
                 android:scaleType="fitCenter"
-                android:src="@drawable/setting"/>
+                android:src="@drawable/setting" />
 
         </LinearLayout>
 
