@@ -8,12 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:869437737951:android:0e5c9d335abb93e044126a",
+        "mobilesdk_app_id": "1:869437737951:android:8248e2a671b64aaf44126a",
         "android_client_info": {
           "package_name": "com.test.doyouwanttograduate"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "869437737951-b9njegjo80be4rfuks09mmcdv190rppu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.test.doyouwanttograduate",
+            "certificate_hash": "7f20869e13e6b354cf081a4b8f18aa581709f850"
+          }
+        },
         {
           "client_id": "869437737951-btl0h81nivth6mmvg3undm4ood6h48uv.apps.googleusercontent.com",
           "client_type": 3
