@@ -5,7 +5,6 @@ import androidx.room.*
 @Dao
 interface DatabaseFunctions {
 
-
     // TODO: for MainClass : 전체 과목 데이터
     @Query("SELECT * FROM table_main")
     fun getAllMainClasses(): List<MainClass>

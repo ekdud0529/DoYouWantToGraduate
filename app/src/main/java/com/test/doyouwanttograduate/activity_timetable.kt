@@ -130,8 +130,6 @@ class activity_timetable : AppCompatActivity() {
             startActivity(intent_fbnt)
             overridePendingTransition(0, 0)
         }
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -147,7 +145,6 @@ class activity_timetable : AppCompatActivity() {
                 selectedSemester!!
             )
         }
-
     }
 
     override fun onDestroy() {

@@ -10,9 +10,7 @@ import kotlinx.android.synthetic.main.add_subject.*
 import kotlinx.android.synthetic.main.timetable.*
 
 class addActivity : AppCompatActivity() {
-//    private var grade = listOf<TableGrade>()
-//    private var sem = listOf<TableSemester>()
-//    private var dbDb: AppDatabase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,26 +23,8 @@ class addActivity : AppCompatActivity() {
 //        val num = num_edt.text.toString().trim()
 //        val state = state_edt.text.toString().trim()
 //
-//
-//        /** table 학년학기 db가져오기 **/
-//
-//        dbDb = AppDatabase.getInstance(this)
-//
-//        val addRunnable = Runnable {
-//            val newDb = TableGrade(null, grade_sel.selectedItem.toString())
-//            val new_semDb = TableSemester(null, semester_sel.selectedItem.toString())
-//
-//            dbDb?.dbDao()?.insert_grade(newDb)
-//            dbDb?.dbDao()?.insert_semester(new_semDb)
-//        }
-//
-//        val addThread = Thread(addRunnable)
-//        addThread.start()
-//        finish()
-//
-//        /** ------------------------ **/
-//
-//
+
+
 //        add_complete.setOnClickListener {
 //            val intent_add = Intent(this@addActivity, activity_timetable::class.java)
 //
