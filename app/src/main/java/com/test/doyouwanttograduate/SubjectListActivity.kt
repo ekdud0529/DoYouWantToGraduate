@@ -42,6 +42,7 @@ class SubjectListActivity : AppCompatActivity() {
             this@SubjectListActivity,
             android.R.layout.simple_list_item_1,
             grade
+
         )
         val adapt2 = ArrayAdapter<String>(
             this@SubjectListActivity,
@@ -79,7 +80,7 @@ class SubjectListActivity : AppCompatActivity() {
         mdb = AppDatabase.getInstance(applicationContext)
 
 
-        //데이터 미리 뿌리기.
+        //처음 들어갈 때 데이터 미리 뿌리기.
         //전체를 뿌려주려면 loadDataAll(mdb!!)
         loadData(mdb!!, selectedGrade!!, selectedSemester!!)
 
@@ -89,8 +90,6 @@ class SubjectListActivity : AppCompatActivity() {
         }
 
         choice_click.setOnClickListener {
-            // 추가해야되는거 : 과목 여러개 선택하고 확인 누르면 그 내용이 timetable_??로 가는거 (넘어온 timetable_학년학기 정보를 저장해야할거 같음!)
-
             //TODO: 체크리스트 확인.
             if (mainListView.adapter != null) {
                 val checkedClasses =
@@ -102,6 +101,7 @@ class SubjectListActivity : AppCompatActivity() {
                     Thread(Runnable {
 
                         mdb!!.getDatabase().addUserClasses(*checkedClasses.toTypedArray())
+
 
                         //이전 activity 로 돌아가기.
                         setResult(Activity.RESULT_OK)

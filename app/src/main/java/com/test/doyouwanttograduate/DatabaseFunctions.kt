@@ -41,7 +41,7 @@ interface DatabaseFunctions {
     fun updateUserClass(selected_class: UserClass)
 
     @Delete
-    fun removeUserClass(selected_class: UserClass)
+    fun removeUserClass(selected_class: Array<UserClass>)
 
 
 }
