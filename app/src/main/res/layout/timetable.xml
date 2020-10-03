@@ -23,7 +23,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="Class 1 - 1"
-            android:textColor="#632ACA"
+            android:textColor="#ffffff"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -104,7 +104,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1">
+        android:layout_weight="0.1"
+        android:background="#9397d0">
 
         <LinearLayout
             android:id="@+id/back_layout"
@@ -127,13 +128,8 @@
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-
             </RelativeLayout>
 
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/colorStd" />
 
             <RelativeLayout
                 android:id="@+id/bsm_layout"

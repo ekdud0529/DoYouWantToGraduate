@@ -27,6 +27,7 @@ class activity_mng : AppCompatActivity() {
         var numRef = database.reference
         numRef = numRef.child("number").child("$number")
 
+        // 학번에 맞는 점수 표에 뿌려주기
         numRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(num: DataSnapshot) {
                 Log.d("Test value", "${num.value}")

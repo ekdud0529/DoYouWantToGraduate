@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:src="@drawable/whitesymbol"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="350dp"
             android:layout_marginBottom="15dp"
             android:layout_centerHorizontal="true"/>
@@ -102,7 +102,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1">
+        android:layout_weight="0.09"
+        android:background="#9397d0">
 
         <LinearLayout
             android:id="@+id/back_layout"
@@ -254,6 +255,7 @@
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:text="@string/complete"
+            android:padding="15dp"
             android:background="@drawable/listrec"
             android:textSize="20sp"
             android:textStyle="bold" />
