@@ -37,4 +37,3 @@ data class UserClass(
     @ColumnInfo(name = "grade") var grade: Int,
     @ColumnInfo(name = "semester") var semester: Int
 )
-

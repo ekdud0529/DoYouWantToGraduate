@@ -10,7 +10,11 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.timetable.*
+import kotlinx.android.synthetic.main.timetable.fin_bnt
 import kotlinx.android.synthetic.main.timetable.g_s_complete
+import kotlinx.android.synthetic.main.timetable.grade_selector
+import kotlinx.android.synthetic.main.timetable.home_bnt
+import kotlinx.android.synthetic.main.timetable.semester_selector
 import kotlinx.android.synthetic.main.timetable.set_bnt
 import java.lang.Exception
 
@@ -95,7 +99,22 @@ class activity_timetable : AppCompatActivity() {
         etc_add.setOnClickListener {
             val intent_etc = Intent(this@activity_timetable, addActivity::class.java)
             startActivity(intent_etc)
+            val name =  intent.getStringExtra("name")
+            val bsm = intent.getStringExtra("bsm")
+            val plan =  intent.getStringExtra("plan")
+            val num = intent.getIntExtra("num",0)
+            val state =  intent.getStringExtra("state")
+
+            val UserList = ArrayList<UserClass>(0)
+            UserList.add(UserClass(0, name.toString(),bsm,plan,num,state, selectedGrade!!,selectedSemester!!))
+            mdb!!.getDatabase().addUserClasses(*UserList.toTypedArray())
+            loadData(
+                mdb!!,
+                selectedGrade!!,
+                selectedSemester!!
+            )
         }
+
 
 
         subject_add.setOnClickListener {
@@ -107,7 +126,7 @@ class activity_timetable : AppCompatActivity() {
 
 
         delete_bt.setOnClickListener {
-            // timetable내용 지우기 ㄱㄱ
+            
         }
 
 
@@ -130,24 +149,27 @@ class activity_timetable : AppCompatActivity() {
             startActivity(intent_fbnt)
             overridePendingTransition(0, 0)
         }
-
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("LOG<receive>", "onActivityResult")
 
+        if(resultCode != RESULT_OK){
+            Toast.makeText(this,"결과 성공 아님",Toast.LENGTH_SHORT).show()
+            return
+        }
+
         //과목을 선택 했을경우,
         if (requestCode == 1011 && resultCode == Activity.RESULT_OK) {
             //데이터 갱신하기.
+
             loadData(
                 mdb!!,
                 selectedGrade!!,
                 selectedSemester!!
             )
         }
-
     }
 
     override fun onDestroy() {
