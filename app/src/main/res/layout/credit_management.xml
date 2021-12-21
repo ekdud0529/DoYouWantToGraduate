@@ -15,10 +15,10 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/whitesymbol"
-            android:layout_marginTop="40dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="350dp"
-            android:layout_centerHorizontal="true"/>
+            android:src="@drawable/whitesymbol" />
 
     </RelativeLayout>
 
@@ -33,11 +33,11 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:stretchColumns="*"
-            android:paddingTop="0dp"
             android:layout_centerInParent="true"
             android:background="@drawable/spinner_bnt">
 
-            <TableRow>
+            <TableRow
+                android:background="@drawable/spinner_bnt">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,9 +70,7 @@
 
             </TableRow>
 
-            <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginTop="5dp">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,7 +101,38 @@
             </TableRow>
 
             <TableRow
-                android:layout_marginTop="5dp">
+                android:background="#FFFFFF">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="전문교양"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:gravity="center"
+                    android:background="#00000000"/>
+
+                <TextView
+                    android:id="@+id/maj_elect1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textSize="24sp"
+                    android:textColor="#000000"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/maj_elect2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="21"
+                    android:textSize="24sp"
+                    android:textColor="#ff0044"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,8 +164,7 @@
             </TableRow>
 
             <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginTop="5dp">
+                android:background="#FFFFFF">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -169,8 +197,7 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_marginTop="5dp">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -204,8 +231,7 @@
             </TableRow>
 
             <TableRow
-                android:background="#FFFFFF"
-                android:layout_marginTop="5dp">
+                android:background="#FFFFFF">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -238,8 +264,7 @@
 
             </TableRow>
 
-            <TableRow
-                android:layout_marginTop="5dp">
+            <TableRow>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -273,8 +298,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/spinner_bnt"
-                android:layout_marginTop="5dp">
+                android:background="@drawable/spinner_bnt">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
