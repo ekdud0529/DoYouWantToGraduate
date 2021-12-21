@@ -37,7 +37,7 @@ class activity_mng : AppCompatActivity() {
                 val majMin = num.child("majmin").value as Long
                 val majrqMin = num.child("majrqmin").value as Long
 
-                elect2.text = "${electMin / electMax}"
+                elect2.text = "$electMin" + "/" + "$electMax"
                 majorrq2.text = "$majrqMin"
                 major2.text = "$majMin"
             }

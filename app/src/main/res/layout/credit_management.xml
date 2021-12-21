@@ -129,7 +129,7 @@
                     android:padding="12dp"
                     android:textSize="24sp"
                     android:text="12"
-                    android:textColor="#000000"
+                    android:textColor="#ff0044"
                     android:gravity="center"/>
 
             </TableRow>
@@ -163,7 +163,7 @@
                     android:padding="12dp"
                     android:textSize="24sp"
                     android:text="22"
-                    android:textColor="#000000"
+                    android:textColor="#ff0044"
                     android:gravity="center"
                     android:background="#00000000"/>
 
@@ -301,7 +301,7 @@
                     android:padding="12dp"
                     android:text="140"
                     android:textSize="24sp"
-                    android:textColor="#000000"
+                    android:textColor="#ff0044"
                     android:gravity="center"
                     android:background="#00000000"/>
 
