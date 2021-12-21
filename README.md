@@ -21,3 +21,5 @@
 > 
 > firebase 사용를 사용해 본인 학번에 맞는 값으로 세팅된다.
 > <div><img width="250" src="https://user-images.githubusercontent.com/45174177/146895112-1a4dca6c-6145-456f-a26d-a1f59e02ded8.png"></div>
+
+### 2. 학번 변경
