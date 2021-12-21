@@ -20,7 +20,7 @@ class activity_mng : AppCompatActivity() {
         val pref = getSharedPreferences("setting", Context.MODE_PRIVATE)
         val number: Int = pref.getInt("grade", 0)
 
-        Log.d("Test grade", "$number")
+        Log.e("Test grade", "$number")
 
 
         val database = Firebase.database
@@ -43,7 +43,7 @@ class activity_mng : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.w("activity_mng", "Failed to read value", error.toException())
+                Log.e("activity_mng", "Failed to read value", error.toException())
             }
         })
 
