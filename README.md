@@ -21,5 +21,7 @@
 |<div><img width="250" src="https://user-images.githubusercontent.com/45174177/146895112-1a4dca6c-6145-456f-a26d-a1f59e02ded8.png"></div>|
 
 ### 2. 학번 변경
-<div><img width="250" scr="https://user-images.githubusercontent.com/45174177/147820663-99408238-c549-45b4-a44c-138011eb6478.png"></div>
-<div><img width="250" src="https://user-images.githubusercontent.com/45174177/147820574-a9b019d6-463e-4562-a9db-bc398674edc9.png"></div>
+<div>
+  <img width="250" scr="https://user-images.githubusercontent.com/45174177/147820663-99408238-c549-45b4-a44c-138011eb6478.png">
+  <img width="250" src="https://user-images.githubusercontent.com/45174177/147820574-a9b019d6-463e-4562-a9db-bc398674edc9.png">
+</div>
